@@ -4,6 +4,7 @@ export const MuiGlobalStyle = {
     padding: 0,
     boxSizing: "border-box",
     fontFamily: "Ubuntu, sans-serif",
+    color: "#3A3A3A",
   },
 };
 
@@ -32,6 +33,7 @@ export const customTheme = {
 
   typography: {
     fontFamily: "Ubuntu, sans-serif",
+    color: "gray",
 
     headerMain: {
       fontSize: 57,
