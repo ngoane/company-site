@@ -1,11 +1,30 @@
 import React from "react";
-import { Nav, NavLogo } from "./navCompStyle";
-import Image from "next/image";
+import {
+  Nav,
+  InnerNav,
+  NavLogo,
+  NavLinkContainer,
+  NavLink,
+  NavLinkWhite,
+} from "./navCompStyle";
+
 const NavComp = () => {
   return (
     <>
       <Nav>
-        <NavLogo src={"/navLogo.png"} />
+        <InnerNav>
+          <NavLogo src={"/navLogo.png"} />
+          <NavLinkContainer>
+            <NavLink href="">Home</NavLink>
+            <NavLink href="">Home</NavLink>
+            <NavLink href="">Home</NavLink>
+          </NavLinkContainer>
+
+          <NavLinkContainer>
+            <NavLink href="">Login</NavLink>
+            <NavLinkWhite href="">Sign up</NavLinkWhite>
+          </NavLinkContainer>
+        </InnerNav>
       </Nav>
     </>
   );
