@@ -1,13 +1,13 @@
 import React from "react";
-import NavComp from "@/components/navigation/NavComp";
-import FooterComp from "@/components/footer/FooterComp";
+import { Typography } from "@mui/material";
 
 const HomePage = () => {
   return (
     <>
-      <NavComp />
-
-      <FooterComp />
+      <Typography variant="headerMainBold">HOMEPAGE</Typography>
+      <Typography variant="caption">
+        lorem ipsum dolor recy scbkjbksnkjc vciuguie vsdvu,ccd vvdyye kjbue
+      </Typography>
     </>
   );
 };

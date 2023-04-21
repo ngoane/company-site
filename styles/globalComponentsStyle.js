@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 
 import { Button } from "@mui/material";
 
+export const MainWrapper = styled.main`
+  margin-top: 5rem;
+`;
+
 export const RoundedButton = styled(Button)`
   border-radius: 5rem;
   box-shadow: none;

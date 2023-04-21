@@ -2,6 +2,7 @@ import { GlobalStyles } from "@mui/material";
 import { MuiGlobalStyle } from "@/styles/muiGlobalStyle";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { customTheme } from "@/styles/muiGlobalStyle";
+import Layout from "@/components/layout/Layout";
 
 const theme = createTheme(customTheme);
 
@@ -10,7 +11,9 @@ export default function App({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyles styles={MuiGlobalStyle} />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   );

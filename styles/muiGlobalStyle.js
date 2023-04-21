@@ -3,7 +3,7 @@ export const MuiGlobalStyle = {
     margin: 0,
     padding: 0,
     boxSizing: "border-box",
-    fontFamily: "Ubuntu, sans-serif",
+    fontFamily: "Lato, sans-serif",
     color: "#3A3A3A",
   },
 };
@@ -32,37 +32,42 @@ export const customTheme = {
   //decleration of different font styles.
 
   typography: {
-    fontFamily: "Ubuntu, sans-serif",
     color: "gray",
 
     headerMain: {
       fontSize: 57,
       fontWeight: 400,
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     headerMainBold: {
       fontSize: 57,
       fontWeight: "bold",
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMain: {
       fontSize: 32,
       fontWeight: 400,
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMainBold: {
       fontSize: 32,
       fontWeight: "bold",
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     title: {
       fontSize: 22,
       fontWeight: 400,
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     titleBold: {
       fontSize: 22,
       fontWeight: "bold",
+      fontFamily: "Ubuntu, sans-serif",
     },
 
     body: {
