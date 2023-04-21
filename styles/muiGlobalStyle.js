@@ -34,63 +34,63 @@ export const customTheme = {
     color: "#3A3A3A",
 
     headerMain: {
-      fontSize: 57,
+      fontSize: "3.563rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headerMainBold: {
-      fontSize: 57,
+      fontSize: "3.563rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMain: {
-      fontSize: 32,
+      fontSize: "2rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMainBold: {
-      fontSize: 32,
+      fontSize: "2rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     title: {
-      fontSize: 22,
+      fontSize: "1.375rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     titleBold: {
-      fontSize: 22,
+      fontSize: "1.375rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     body: {
-      fontSize: 16,
+      fontSize: "1rem",
       fontWeight: 400,
     },
 
     bodyBold: {
-      fontSize: 16,
+      fontSize: "1rem",
       fontWeight: "bold",
     },
 
     label: {
-      fontSize: 14,
+      fontSize: "0.875rem",
       fontWeight: 400,
     },
 
     labelBold: {
-      fontSize: 14,
+      fontSize: "0.875rem",
       fontWeight: "bold",
     },
 
     caption: {
-      fontSize: 12,
+      fontSize: "0.75",
       fontWeight: 400,
     },
   },

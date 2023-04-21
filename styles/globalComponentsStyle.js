@@ -4,7 +4,11 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 
 export const MainWrapper = styled.main`
-  padding: 5rem 4rem 0rem 4rem;
+  margin-top: 5rem;
+`;
+
+export const CompBody = styled.section`
+  padding: 0 4rem;
 `;
 
 export const CustomButton = styled(Button)`
