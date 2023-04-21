@@ -1,28 +1,26 @@
 import React from "react";
+import { Nav, InnerNav, NavLogo, NavLinkContainer } from "./navCompStyle";
+
 import {
-  Nav,
-  InnerNav,
-  NavLogo,
-  NavLinkContainer,
-  NavLink,
-  NavLinkWhite,
-} from "./navCompStyle";
+  NavLinkWhiteText,
+  NavLinkWhiteButton,
+} from "@/styles/globalComponentsStyle";
 
 const NavComp = () => {
   return (
     <>
       <Nav>
         <InnerNav>
-          <NavLogo src={"/navLogo.png"} />
+          <NavLogo src={"/logos/navLogo.png"} />
           <NavLinkContainer>
-            <NavLink href="">Home</NavLink>
-            <NavLink href="">Home</NavLink>
-            <NavLink href="">Home</NavLink>
+            <NavLinkWhiteText href="">Home</NavLinkWhiteText>
+            <NavLinkWhiteText href="">Home</NavLinkWhiteText>
+            <NavLinkWhiteText href="">Home</NavLinkWhiteText>
           </NavLinkContainer>
 
           <NavLinkContainer>
-            <NavLink href="">Login</NavLink>
-            <NavLinkWhite href="">Sign up</NavLinkWhite>
+            <NavLinkWhiteText href="">Login</NavLinkWhiteText>
+            <NavLinkWhiteButton href="">Sign up</NavLinkWhiteButton>
           </NavLinkContainer>
         </InnerNav>
       </Nav>

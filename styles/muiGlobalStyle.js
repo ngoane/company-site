@@ -4,7 +4,6 @@ export const MuiGlobalStyle = {
     padding: 0,
     boxSizing: "border-box",
     fontFamily: "Lato, sans-serif",
-    color: "#3A3A3A",
   },
 };
 
@@ -32,7 +31,7 @@ export const customTheme = {
   //decleration of different font styles.
 
   typography: {
-    color: "gray",
+    color: "#3A3A3A",
 
     headerMain: {
       fontSize: 57,
