@@ -78,27 +78,32 @@ export const customTheme = {
     body: {
       fontSize: "1rem",
       fontWeight: 400,
+      fontFamily: "Lato, sans-serif",
       lineHeight: "1.5rem",
     },
 
     bodyBold: {
       fontSize: "1rem",
       fontWeight: "bold",
+      fontFamily: "Lato, sans-serif",
       lineHeight: "1.5rem",
     },
 
     label: {
       fontSize: "0.875rem",
+      fontFamily: "Lato, sans-serif",
       fontWeight: 400,
     },
 
     labelBold: {
       fontSize: "0.875rem",
+      fontFamily: "Lato, sans-serif",
       fontWeight: "bold",
     },
 
     caption: {
       fontSize: "0.75",
+      fontFamily: "Lato, sans-serif",
       fontWeight: 400,
     },
   },

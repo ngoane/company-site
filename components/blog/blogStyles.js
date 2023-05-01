@@ -73,3 +73,13 @@ export const PaginationContainer = styled(Stack)`
   justify-content: center;
   margin: 5rem 0rem 15rem 0rem;
 `;
+
+// Blog single post details styles
+export const BlogDetailImage = styled.img`
+  width: 100%;
+  height: 20rem;
+  margin-top: 3rem;
+  background-color: lightgray;
+  border-radius: 1rem;
+  object-fit: cover;
+`;
