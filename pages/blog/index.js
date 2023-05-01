@@ -3,21 +3,27 @@ import { CompBody } from "@/styles/globalComponentsStyle";
 import {
   BlogHeroContainer,
   BlogArticleListContainer,
+  PaginationContainer,
 } from "@/components/blog/blogStyles";
-import { Typography } from "@mui/material";
+import { Pagination, Typography } from "@mui/material";
 import BlogArticle from "@/components/blog/BlogArticle";
+import BlogFilterBox from "@/components/blog/BlogFilterBox";
 
 const index = () => {
   return (
     <>
       <BlogHeroContainer />
       <CompBody>
-        <Typography variant="headerMainBold" marginTop={"4rem"}>
+        <BlogFilterBox />
+        <Typography variant="headlineMainBold" marginTop={"4rem"}>
           See Todays Blog Posts
         </Typography>
         <BlogArticleListContainer>
           <BlogArticle />
         </BlogArticleListContainer>
+        <PaginationContainer>
+          <Pagination count={10} color="primary" />
+        </PaginationContainer>
       </CompBody>
     </>
   );

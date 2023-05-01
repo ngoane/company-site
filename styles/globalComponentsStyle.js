@@ -8,7 +8,7 @@ export const MainWrapper = styled.main`
 `;
 
 export const CompBody = styled.section`
-  padding: 0 4rem;
+  padding: 0 3rem;
 `;
 
 export const CustomButton = styled(Button)`

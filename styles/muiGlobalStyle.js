@@ -5,6 +5,10 @@ export const MuiGlobalStyle = {
     boxSizing: "border-box",
     fontFamily: "Lato, sans-serif",
   },
+  body: {
+    backgroundColor: "#F8F1FF",
+    color: "#3A3A3A",
+  },
 };
 
 export const customTheme = {
@@ -22,6 +26,8 @@ export const customTheme = {
     customRed: "#E31276",
 
     whiteBg: "#FFFFFF",
+
+    bodyBg: "#F8F1FF",
 
     altBg: "#F8F9FA",
 
@@ -72,11 +78,13 @@ export const customTheme = {
     body: {
       fontSize: "1rem",
       fontWeight: 400,
+      lineHeight: "1.5rem",
     },
 
     bodyBold: {
       fontSize: "1rem",
       fontWeight: "bold",
+      lineHeight: "1.5rem",
     },
 
     label: {
