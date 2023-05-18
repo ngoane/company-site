@@ -45,6 +45,12 @@ export const customTheme = {
       fontFamily: "Ubuntu, sans-serif",
     },
 
+    headerHuge: {
+      fontSize: "3.5rem",
+      fontWeight: 400,
+      fontFamily: "Ubuntu, sans-serif",
+    },
+
     headerMainBold: {
       fontSize: "3.563rem",
       fontWeight: "bold",

@@ -20,8 +20,8 @@ const NavComp = () => {
           </NavLinkContainer>
 
           <NavLinkContainer>
-            <NavLinkWhiteText href="">Login</NavLinkWhiteText>
-            <NavLinkWhiteButton href="">Sign up</NavLinkWhiteButton>
+            <NavLinkWhiteText href="/user/login">Login</NavLinkWhiteText>
+            <NavLinkWhiteButton href="/user/register">Sign up</NavLinkWhiteButton>
           </NavLinkContainer>
         </InnerNav>
       </Nav>
