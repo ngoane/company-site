@@ -39,6 +39,13 @@ export const TextButton = styled(Button)`
   }
 `;
 
+export const AdminTextButton = styled(TextButton)`
+  color: ${({ theme }) => theme.palette.textColor};
+  &:hover {
+    background-color: transparent;
+  }
+`;
+
 export const NavLinkWhiteText = styled(Link)`
   outline: none;
   border: none;

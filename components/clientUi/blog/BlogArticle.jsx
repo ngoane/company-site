@@ -20,9 +20,9 @@ let dummyArray = [1, 2, 3];
 const BlogArticle = () => {
   return (
     <>
-      {dummyArray.map((item) => {
+      {dummyArray.map((item, key) => {
         return (
-          <SingleBlogItemContainer>
+          <SingleBlogItemContainer key={key}>
             <Card width={"100%"} elevation={8}>
               <ArticleImage />
               <CardContent>
