@@ -17,7 +17,7 @@ export const LeftNavLogoContainer = styled.div`
   padding: 2rem 1rem;
 `;
 
-export const AdminLogo = styled.img``;
+export const UserLogo = styled.img``;
 
 export const LeftNavInnerBox = styled.nav`
   display: flex;
@@ -28,7 +28,7 @@ export const LeftNavInnerBox = styled.nav`
   gap: 0.5rem;
 `;
 
-export const AdminNavLink = styled(Link)`
+export const UserNavLink = styled(Link)`
   text-decoration: none;
   padding: 0.5rem;
   display: flex;
@@ -38,7 +38,7 @@ export const AdminNavLink = styled(Link)`
   color: #3a3a3a;
 `;
 
-export const AdminIconBox = styled.i`
+export const UserIconBox = styled.i`
   color: ${({ theme, active }) =>
     active == true ? theme.palette.primary.main : "#3A3A3A"};
 `;

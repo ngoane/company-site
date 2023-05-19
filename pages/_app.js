@@ -3,7 +3,7 @@ import { MuiGlobalStyle } from "@/styles/muiGlobalStyle";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { customTheme } from "@/styles/muiGlobalStyle";
 import ClientLayout from "@/components/clientUi/layout/ClientLayout";
-import AdminLayout from "@/components/adminUi/layout/AdminLayout";
+import UserLayout from "@/components/userUi/layout/UserLayout";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
     let path = router.pathname;
-    let adminLayout = path.match("admin");
+    let adminLayout = path.match("user");
     if (adminLayout) {
       setLayout(true);
     } else {
@@ -31,9 +31,9 @@ export default function App({ Component, pageProps }) {
             <Component {...pageProps} />
           </ClientLayout>
         ) : (
-          <AdminLayout>
+          <UserLayout>
             <Component {...pageProps} />
-          </AdminLayout>
+          </UserLayout>
         )}
       </ThemeProvider>
     </>

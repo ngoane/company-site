@@ -9,7 +9,7 @@ import {
   TopNavProfileBox,
   TopNavSearchBar,
   TopNavProfileName,
-} from "./adminNavStyles";
+} from "./userNavStyles";
 import { AdminTextButton } from "@/styles/globalComponentsStyle";
 import { Box, InputAdornment, Typography } from "@mui/material";
 import ArrowCircleLeftOutlinedIcon from "@mui/icons-material/ArrowCircleLeftOutlined";

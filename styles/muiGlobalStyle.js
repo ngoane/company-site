@@ -41,13 +41,13 @@ export const customTheme = {
   typography: {
     color: "#3A3A3A",
 
-    adminLinkText: {
+    userLinkText: {
       fontSize: "1rem",
       fontWeight: 500,
       fontFamily: "Lato, sans-serif",
     },
 
-    adminLinkTextBold: {
+    userLinkTextBold: {
       fontSize: "1rem",
       fontWeight: 700,
       fontFamily: "Lato, sans-serif",

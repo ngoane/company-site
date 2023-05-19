@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import { Button } from "@mui/material";
+import { Button, Stack, Table } from "@mui/material";
 import Link from "next/link";
 
 export const MainWrapper = styled.main`

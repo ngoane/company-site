@@ -1,24 +1,22 @@
 import React, { useState } from "react";
-import { AdminIconBox, AdminNavLink } from "./adminNavStyles";
+import { UserIconBox, UserNavLink } from "./userNavStyles";
 import { Typography } from "@mui/material";
 
 const LeftNavLink = ({ Icon, LinkName, LinkUrl }) => {
   let [linkActive, setLinkActive] = useState(false);
   return (
     <>
-      <AdminNavLink
+      <UserNavLink
         href={`${LinkUrl}`}
         onFocus={() => setLinkActive(true)}
         onBlur={() => setLinkActive(false)}
       >
-        <AdminIconBox active={linkActive}>{Icon}</AdminIconBox>
+        <UserIconBox active={linkActive}>{Icon}</UserIconBox>
 
-        <Typography
-          variant={linkActive ? "adminLinkTextBold" : "adminLinkText"}
-        >
+        <Typography variant={linkActive ? "userLinkTextBold" : "userLinkText"}>
           {LinkName}
         </Typography>
-      </AdminNavLink>
+      </UserNavLink>
     </>
   );
 };

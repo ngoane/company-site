@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
-export const AdminLayoutContainer = styled.main`
+export const UserLayoutContainer = styled.main`
   width: 100%;
 `;
 
-export const AdminLayoutRightBox = styled.section`
+export const UserLayoutRightBox = styled.section`
   position: relative;
   width: 85%;
   margin-inline-start: auto;
@@ -20,7 +20,7 @@ export const TopNavBox = styled.nav`
   background-color: ${({ theme }) => theme.palette.bodyBg};
 `;
 
-export const AdminBody = styled.section`
+export const UserBody = styled.section`
   margin-top: 2rem;
   padding-left: 2rem;
 `;

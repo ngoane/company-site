@@ -1,10 +1,10 @@
 import React from "react";
 import {
-  AdminLogo,
+  UserLogo,
   LeftNavBox,
   LeftNavInnerBox,
   LeftNavLogoContainer,
-} from "./adminNavStyles";
+} from "./userNavStyles";
 import LeftNavLink from "./LeftNavLink";
 import { Divider } from "@mui/material";
 import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
@@ -14,7 +14,7 @@ const LeftNav = () => {
     <>
       <LeftNavBox elevation={8} square="true">
         <LeftNavLogoContainer>
-          <AdminLogo src="/logos/adminLogo.svg" />
+          <UserLogo src="/logos/adminLogo.svg" />
         </LeftNavLogoContainer>
 
         <Divider />
@@ -22,7 +22,7 @@ const LeftNav = () => {
         <LeftNavInnerBox>
           <LeftNavLink
             Icon={<DashboardRoundedIcon />}
-            LinkUrl={"/admin"}
+            LinkUrl={"/user"}
             LinkName={"Dashboard"}
           />
         </LeftNavInnerBox>
