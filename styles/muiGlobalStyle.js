@@ -5,6 +5,10 @@ export const MuiGlobalStyle = {
     boxSizing: "border-box",
     fontFamily: "Lato, sans-serif",
   },
+  body: {
+    backgroundColor: "#F8F1FF",
+    color: "#3A3A3A",
+  },
 };
 
 export const customTheme = {
@@ -23,9 +27,13 @@ export const customTheme = {
 
     whiteBg: "#FFFFFF",
 
+    bodyBg: "#F8F1FF",
+
     altBg: "#F8F9FA",
 
     violetBg: "#EFE9F5",
+
+    textColor: "#3A3A3A",
   },
 
   //decleration of different font styles.
@@ -33,64 +41,83 @@ export const customTheme = {
   typography: {
     color: "#3A3A3A",
 
+    userLinkText: {
+      fontSize: "1rem",
+      fontWeight: 500,
+      fontFamily: "Lato, sans-serif",
+    },
+
+    userLinkTextBold: {
+      fontSize: "1rem",
+      fontWeight: 700,
+      fontFamily: "Lato, sans-serif",
+    },
+
     headerMain: {
-      fontSize: 57,
+      fontSize: "3.563rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headerMainBold: {
-      fontSize: 57,
+      fontSize: "3.563rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMain: {
-      fontSize: 32,
+      fontSize: "2rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     headlineMainBold: {
-      fontSize: 32,
+      fontSize: "2rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     title: {
-      fontSize: 22,
+      fontSize: "1.375rem",
       fontWeight: 400,
       fontFamily: "Ubuntu, sans-serif",
     },
 
     titleBold: {
-      fontSize: 22,
+      fontSize: "1.375rem",
       fontWeight: "bold",
       fontFamily: "Ubuntu, sans-serif",
     },
 
     body: {
-      fontSize: 16,
+      fontSize: "1rem",
       fontWeight: 400,
+      fontFamily: "Lato, sans-serif",
+      lineHeight: "1.5rem",
     },
 
     bodyBold: {
-      fontSize: 16,
+      fontSize: "1rem",
       fontWeight: "bold",
+      fontFamily: "Lato, sans-serif",
+      lineHeight: "1.5rem",
     },
 
     label: {
-      fontSize: 14,
+      fontSize: "0.875rem",
+      fontFamily: "Lato, sans-serif",
       fontWeight: 400,
     },
 
     labelBold: {
-      fontSize: 14,
+      fontSize: "0.875rem",
+      fontFamily: "Lato, sans-serif",
       fontWeight: "bold",
     },
 
     caption: {
-      fontSize: 12,
+      fontSize: "0.75",
+      fontFamily: "Lato, sans-serif",
       fontWeight: 400,
     },
   },

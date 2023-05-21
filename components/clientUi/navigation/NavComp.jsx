@@ -13,9 +13,11 @@ const NavComp = () => {
         <InnerNav>
           <NavLogo src={"/logos/navLogo.png"} />
           <NavLinkContainer>
-            <NavLinkWhiteText href="/">Home</NavLinkWhiteText>
-            <NavLinkWhiteText href="">Home</NavLinkWhiteText>
-            <NavLinkWhiteText href="/contact">Contact</NavLinkWhiteText>
+            <NavLinkWhiteText href="/ngoane">Home</NavLinkWhiteText>
+            <NavLinkWhiteText href="">About</NavLinkWhiteText>
+            <NavLinkWhiteText href="/ngoane/blog">Blog</NavLinkWhiteText>
+            <NavLinkWhiteText href="Contact">Contact</NavLinkWhiteText>
+
           </NavLinkContainer>
 
           <NavLinkContainer>

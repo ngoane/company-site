@@ -3,7 +3,7 @@ import NavComp from "../navigation/NavComp";
 import FooterComp from "../footer/FooterComp";
 import { MainWrapper } from "@/styles/globalComponentsStyle";
 
-const Layout = ({ children }) => {
+const ClientLayout = ({ children }) => {
   return (
     <>
       <NavComp />
@@ -14,4 +14,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default ClientLayout;

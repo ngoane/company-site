@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
 
-import { Button } from "@mui/material";
+import { Button, Stack, Table } from "@mui/material";
 import Link from "next/link";
 
 export const MainWrapper = styled.main`
-  padding: 5rem 4rem 0rem 4rem;
+  margin-top: 5rem;
+`;
+
+export const CompBody = styled.section`
+  padding: 0 3rem;
 `;
 
 export const CustomButton = styled(Button)`
@@ -32,6 +36,13 @@ export const TextButton = styled(Button)`
   text-transform: none;
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+
+export const AdminTextButton = styled(TextButton)`
+  color: ${({ theme }) => theme.palette.textColor};
+  &:hover {
+    background-color: transparent;
   }
 `;
 
