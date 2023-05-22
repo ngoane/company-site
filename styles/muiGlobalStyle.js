@@ -32,12 +32,26 @@ export const customTheme = {
     altBg: "#F8F9FA",
 
     violetBg: "#EFE9F5",
+
+    textColor: "#3A3A3A",
   },
 
   //decleration of different font styles.
 
   typography: {
     color: "#3A3A3A",
+
+    userLinkText: {
+      fontSize: "1rem",
+      fontWeight: 500,
+      fontFamily: "Lato, sans-serif",
+    },
+
+    userLinkTextBold: {
+      fontSize: "1rem",
+      fontWeight: 700,
+      fontFamily: "Lato, sans-serif",
+    },
 
     headerMain: {
       fontSize: "3.563rem",

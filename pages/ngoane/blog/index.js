@@ -4,10 +4,10 @@ import {
   BlogHeroContainer,
   BlogArticleListContainer,
   PaginationContainer,
-} from "@/components/blog/blogStyles";
+} from "@/components/clientUi/blog/blogStyles";
 import { Pagination, Typography } from "@mui/material";
-import BlogArticle from "@/components/blog/BlogArticle";
-import BlogFilterBox from "@/components/blog/BlogFilterBox";
+import BlogArticle from "@/components/clientUi/blog/BlogArticle";
+import BlogFilterBox from "@/components/clientUi/blog/BlogFilterBox";
 
 const index = () => {
   return (

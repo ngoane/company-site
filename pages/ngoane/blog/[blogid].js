@@ -1,4 +1,7 @@
-import { BlogChip, BlogDetailImage } from "@/components/blog/blogStyles";
+import {
+  BlogChip,
+  BlogDetailImage,
+} from "@/components/clientUi/blog/blogStyles";
 import { CompBody } from "@/styles/globalComponentsStyle";
 import { Typography, Stack, Avatar, Divider } from "@mui/material";
 import React from "react";
