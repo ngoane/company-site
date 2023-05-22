@@ -17,7 +17,6 @@ const NavComp = () => {
             <NavLinkWhiteText href="">About</NavLinkWhiteText>
             <NavLinkWhiteText href="/ngoane/blog">Blog</NavLinkWhiteText>
             <NavLinkWhiteText href="Contact">Contact</NavLinkWhiteText>
-
           </NavLinkContainer>
 
           <NavLinkContainer>
