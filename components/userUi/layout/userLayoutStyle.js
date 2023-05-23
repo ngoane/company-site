@@ -15,12 +15,12 @@ export const TopNavBox = styled.nav`
   width: 100%;
   top: 0;
   left: 0;
-  padding: 1rem 0rem 1rem 2rem;
+  padding: 1rem 0rem 1rem 0.5rem;
   /* background-color: blue; */
   background-color: ${({ theme }) => theme.palette.bodyBg};
 `;
 
 export const UserBody = styled.section`
   margin-top: 2rem;
-  padding-left: 2rem;
+  padding: 0rem 0rem 2rem 0.5rem;
 `;

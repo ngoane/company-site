@@ -5,7 +5,7 @@ import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 
 //left nav box style components
 export const LeftNavBox = styled(Paper)`
-  width: 15%;
+  width: 13%;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -15,9 +15,13 @@ export const LeftNavBox = styled(Paper)`
 
 export const LeftNavLogoContainer = styled.div`
   padding: 2rem 1rem;
+  display: grid;
+  place-content: center;
 `;
 
-export const UserLogo = styled.img``;
+export const UserLogo = styled.img`
+  width: 90%;
+`;
 
 export const LeftNavInnerBox = styled.nav`
   display: flex;
