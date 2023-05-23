@@ -20,8 +20,8 @@ const NavComp = () => {
           </NavLinkContainer>
 
           <NavLinkContainer>
-            <NavLinkWhiteText href="ngoane/auth/login">Login</NavLinkWhiteText>
-            <NavLinkWhiteButton href="ngoane/auth/register">
+            <NavLinkWhiteText href="/ngoane/auth/login">Login</NavLinkWhiteText>
+            <NavLinkWhiteButton href="/ngoane/auth/register">
               Sign up
             </NavLinkWhiteButton>
           </NavLinkContainer>
