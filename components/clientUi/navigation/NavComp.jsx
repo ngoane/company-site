@@ -16,12 +16,12 @@ const NavComp = () => {
             <NavLinkWhiteText href="/ngoane">Home</NavLinkWhiteText>
             <NavLinkWhiteText href="">About</NavLinkWhiteText>
             <NavLinkWhiteText href="/ngoane/blog">Blog</NavLinkWhiteText>
-            <NavLinkWhiteText href="Contact">Contact</NavLinkWhiteText>
+            <NavLinkWhiteText href="/ngoane/contact">Contact</NavLinkWhiteText>
           </NavLinkContainer>
 
           <NavLinkContainer>
-            <NavLinkWhiteText href="/user/login">Login</NavLinkWhiteText>
-            <NavLinkWhiteButton href="/user/register">
+            <NavLinkWhiteText href="ngoane/auth/login">Login</NavLinkWhiteText>
+            <NavLinkWhiteButton href="ngoane/auth/register">
               Sign up
             </NavLinkWhiteButton>
           </NavLinkContainer>

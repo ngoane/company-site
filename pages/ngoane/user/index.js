@@ -4,7 +4,7 @@ import React from "react";
 const index = () => {
   return (
     <>
-      <Typography variant="headerMain">Display Here</Typography>
+      <Typography variant="headerMain">Admin layout</Typography>
     </>
   );
 };

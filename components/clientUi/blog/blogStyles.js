@@ -75,6 +75,11 @@ export const PaginationContainer = styled(Stack)`
 `;
 
 // Blog single post details styles
+export const BlogHeaderContainer = styled.div`
+  margin: auto;
+  width: 70%;
+`;
+
 export const BlogDetailImage = styled.img`
   width: 100%;
   height: 20rem;

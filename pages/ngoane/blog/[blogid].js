@@ -1,6 +1,7 @@
 import {
   BlogChip,
   BlogDetailImage,
+  BlogHeaderContainer,
 } from "@/components/clientUi/blog/blogStyles";
 import { CompBody } from "@/styles/globalComponentsStyle";
 import { Typography, Stack, Avatar, Divider } from "@mui/material";
@@ -11,30 +12,32 @@ const SingleBlogPostDetail = () => {
     <div style={{ marginTop: "8rem" }}>
       {/* header section of the single blog post  */}
       <CompBody>
-        <BlogChip>Diet</BlogChip>
-        <Typography variant="headlineMainBold">
-          Food Culture in Ghana and its Impact on Health
-        </Typography>
-        <Stack
-          direction={"row"}
-          sx={{
-            alignitems: "cente",
-            justifyContent: "flex-start",
-            marginTop: "1rem",
-            gap: "1.5rem",
-          }}
-        >
+        <BlogHeaderContainer>
+          <BlogChip>Diet</BlogChip>
+          <Typography variant="headlineMainBold">
+            Food Culture in Ghana and its Impact on Health
+          </Typography>
           <Stack
             direction={"row"}
-            spacing={2}
-            sx={{ alignitems: "center", justifyContent: "center" }}
+            sx={{
+              alignitems: "cente",
+              justifyContent: "flex-start",
+              marginTop: "1rem",
+              gap: "1.5rem",
+            }}
           >
-            <Avatar sx={{ width: 24, height: 24 }} />
-            <Typography variant="label"> Jesica Koch</Typography>
+            <Stack
+              direction={"row"}
+              spacing={2}
+              sx={{ alignitems: "center", justifyContent: "center" }}
+            >
+              <Avatar sx={{ width: 24, height: 24 }} />
+              <Typography variant="label"> Jesica Koch</Typography>
+            </Stack>
+            <Divider orientation="vertical" variant="middle" flexItem />
+            <Typography variant="label"> 02 december 2022</Typography>
           </Stack>
-          <Divider orientation="vertical" variant="middle" flexItem />
-          <Typography variant="label"> 02 december 2022</Typography>
-        </Stack>
+        </BlogHeaderContainer>
       </CompBody>
 
       {/* picture section  */}
