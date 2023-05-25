@@ -1,5 +1,14 @@
 import styled from "@emotion/styled";
-import { Paper, TextField, Stack, Badge, Avatar } from "@mui/material";
+import {
+  Paper,
+  TextField,
+  Stack,
+  Badge,
+  Avatar,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from "@mui/material";
 import Link from "next/link";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 
@@ -34,12 +43,13 @@ export const LeftNavInnerBox = styled.nav`
 
 export const UserNavLink = styled(Link)`
   text-decoration: none;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 0.7rem;
   color: #3a3a3a;
+  width: 100%;
 `;
 
 export const UserIconBox = styled.i`
@@ -98,4 +108,42 @@ export const TopNavProfileName = styled.h6`
   font-size: 14px;
   text-transform: uppercase;
   color: #9138e8;
+`;
+
+export const IconBox = styled.i`
+  padding: 0.05rem 0.2rem;
+  border-radius: 0.2rem;
+  color: ${({ active }) => (active ? "white" : "")};
+  background-color: ${({ active, theme }) =>
+    active ? theme.palette.primary.main : "transparent"};
+`;
+
+//left nav link drop down components styles
+export const LinkContainer = styled(Accordion)`
+  &.MuiAccordion-root {
+    background-color: transparent;
+    border: none;
+    box-shadow: 0 0 0 0 transparent;
+    width: 100%;
+    padding: 0rem;
+  }
+`;
+
+export const LinkHeader = styled(AccordionSummary)`
+  padding: 0rem 1rem 0rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LinkHeaderBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+`;
+
+export const LinkBody = styled(AccordionDetails)`
+  margin-top: -1rem;
+  padding-left: 3rem;
 `;
