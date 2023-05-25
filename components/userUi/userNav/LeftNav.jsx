@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   UserLogo,
   LeftNavBox,
@@ -8,11 +8,23 @@ import {
 import LeftNavLink from "./LeftNavLink";
 import { Divider } from "@mui/material";
 import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
+import LeftNavLinkDropDown from "./LeftNavLinkDropDown";
+
+const healthDataLinksArray = [
+  { name: "Symptoms", linkUrl: "/user" },
+  { name: "Lab Report", linkUrl: "/user" },
+  { name: "Health History", linkUrl: "/user" },
+];
 
 const LeftNav = () => {
+  let [activeLink, setActiveLink] = useState("");
+
+  const makeActive = (e, name) => {
+    setActiveLink(name);
+  };
   return (
     <>
-      <LeftNavBox elevation={8} square="true">
+      <LeftNavBox elevation={8} square={true}>
         <LeftNavLogoContainer>
           <UserLogo src="/logos/adminLogo.svg" />
         </LeftNavLogoContainer>
@@ -21,9 +33,19 @@ const LeftNav = () => {
 
         <LeftNavInnerBox>
           <LeftNavLink
-            Icon={<DashboardRoundedIcon />}
-            LinkUrl={"/user"}
-            LinkName={"Dashboard"}
+            icon={<DashboardRoundedIcon />}
+            linkUrl={"/user"}
+            linkName={"Dashboard"}
+            nowActive={activeLink === "Dashboard"}
+            activateLink={makeActive}
+          />
+
+          <LeftNavLinkDropDown
+            icon={<DashboardRoundedIcon />}
+            linkName={"Health Data"}
+            nowActive={activeLink === "Health Data"}
+            activateLink={makeActive}
+            linksArray={healthDataLinksArray}
           />
         </LeftNavInnerBox>
       </LeftNavBox>

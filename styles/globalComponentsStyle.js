@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
-import { Button, Stack, Table } from "@mui/material";
+import { Button, Stack, Table, TableCell, TableHead } from "@mui/material";
+import { tableCellClasses } from "@mui/material/TableCell";
 import Link from "next/link";
 
 export const MainWrapper = styled.main`
@@ -86,5 +87,28 @@ export const FooterNavLink = styled(NavLinkWhiteText)`
     background-color: transparent;
     text-decoration: underline;
     color: ${({ theme }) => theme.palette.primary.main};
+  }
+`;
+
+// custom table components styles
+
+export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.violetBg,
+    color: theme.palette.textColor,
+    fontWeight: 700,
+    fontSize: 14,
+    padding: "0.6rem 1rem",
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 12,
+  },
+}));
+
+export const StyledTable = styled(Table)`
+  &.MuiTable-root {
+    overflow: hidden;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
   }
 `;

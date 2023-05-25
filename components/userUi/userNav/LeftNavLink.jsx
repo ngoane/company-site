@@ -1,20 +1,19 @@
-import React, { useState } from "react";
-import { UserIconBox, UserNavLink } from "./userNavStyles";
+import React from "react";
+import { UserNavLink, IconBox } from "./userNavStyles";
 import { Typography } from "@mui/material";
 
-const LeftNavLink = ({ Icon, LinkName, LinkUrl }) => {
-  let [linkActive, setLinkActive] = useState(false);
+const LeftNavLink = ({ icon, linkName, linkUrl, nowActive, activateLink }) => {
+  // let [linkActive, setLinkActive] = useState(false);
   return (
     <>
       <UserNavLink
-        href={`${LinkUrl}`}
-        onFocus={() => setLinkActive(true)}
-        onBlur={() => setLinkActive(false)}
+        href={`${linkUrl}`}
+        onClick={(e) => activateLink(e, linkName)}
       >
-        <UserIconBox active={linkActive}>{Icon}</UserIconBox>
+        <IconBox active={nowActive}>{icon}</IconBox>
 
-        <Typography variant={linkActive ? "userLinkTextBold" : "userLinkText"}>
-          {LinkName}
+        <Typography variant={nowActive ? "userLinkTextBold" : "userLinkText"}>
+          {linkName}
         </Typography>
       </UserNavLink>
     </>

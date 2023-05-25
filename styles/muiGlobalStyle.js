@@ -53,6 +53,19 @@ export const customTheme = {
       fontFamily: "Lato, sans-serif",
     },
 
+    userDropDownLinkText: {
+      fontSize: "0.8rem",
+      fontWeight: 500,
+      fontFamily: "Lato, sans-serif",
+    },
+
+    userDropDownLinkTextActive: {
+      fontSize: "0.8rem",
+      fontWeight: 700,
+      fontFamily: "Lato, sans-serif",
+      color: "#9138E8",
+    },
+
     headerMain: {
       fontSize: "3.563rem",
       fontWeight: 400,
