@@ -1,14 +1,13 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
+import { LandingIntro } from "@/components/landing/Landing"; 
+import { LandingContainer } from "@/components/landing/StyledLanding"; 
 
 const HomePage = () => {
   return (
-    <>
-      <Typography variant="headerMainBold">HOMEPAGE</Typography>
-      <Typography variant="caption">
-        lorem ipsum dolor recy scbkjbksnkjc vciuguie vsdvu,ccd vvdyye kjbue
-      </Typography>
-    </>
+    <LandingContainer spacing={12}>
+      <LandingIntro />
+    </LandingContainer>
   );
 };
 
