@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Container } from "@mui/material";
-import { LandingIntro } from "@/components/landing/Landing"; 
-import { LandingContainer } from "@/components/landing/StyledLanding"; 
+import { LandingIntro } from "@/components/clientUi/landing/Landing";
+import { LandingContainer } from "@/components/clientUi/landing/StyledLanding";
 
 const HomePage = () => {
   return (
