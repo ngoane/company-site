@@ -4,8 +4,7 @@ import Icon from "@mui/material/Icon";
 import Link from "next/link";
 
 function SigninTitle({ title, question, cta }) {
-  const url =
-    cta === "Register" ? "/ngoane/auth/register" : "/ngoane/auth/login";
+  const url = cta === "Register" ? "/auth/register" : "/auth/login";
   return (
     <div className="formTitle">
       <Stack

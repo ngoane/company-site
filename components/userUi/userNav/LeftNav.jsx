@@ -11,10 +11,22 @@ import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
 import LeftNavLinkDropDown from "./LeftNavLinkDropDown";
 
 const healthDataLinksArray = [
-  { name: "Symptoms", linkUrl: "/user" },
+  { name: "Symptoms Tracker", linkUrl: "/user/health_data/symptom_tracker" },
   { name: "Lab Report", linkUrl: "/user" },
   { name: "Health History", linkUrl: "/user" },
 ];
+
+/*
+name: LeftNav
+
+Description: this is the user section left nav bar where all the links to other pages can br found including the settings
+
+instructions: it currently does not accept any prop but returns all the link to other pages ui and also manage the acctive link state
+
+returns: All the individual and drop down link to other pages ui
+
+
+*/
 
 const LeftNav = () => {
   let [activeLink, setActiveLink] = useState("");

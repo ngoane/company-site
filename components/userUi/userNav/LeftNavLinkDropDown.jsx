@@ -11,6 +11,24 @@ import {
   UserNavLink,
 } from "./userNavStyles";
 
+/*
+name: LeftNavLinkDropDown
+
+Description: this component that houses different individual link. it is located on the leftNav component that links to a new user page.
+
+instructions: it accepts {icon,linkName,nowActive,activateLink,linksArray, } props which are neccessary to return and individual link
+
+returns: a single indidvidual link to a new user page
+
+Note: this components can return multiple links so it requires and array of object that contains each link data e.g 
+[
+  { name: "Symptoms", linkUrl: "/user" },
+  { name: "Lab Report", linkUrl: "/user" },
+  { name: "Health History", linkUrl: "/user" },
+];
+
+*/
+
 const LeftNavLinkDropDown = ({
   icon,
   linkName,
