@@ -111,7 +111,7 @@ export const TopNavProfileName = styled.h6`
 `;
 
 export const IconBox = styled.i`
-  padding: 0.05rem 0.2rem;
+  padding: 0.1rem 0.2rem;
   border-radius: 0.2rem;
   color: ${({ active }) => (active ? "white" : "")};
   background-color: ${({ active, theme }) =>

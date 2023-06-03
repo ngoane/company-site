@@ -7,11 +7,12 @@ import {
 } from "./userNavStyles";
 import LeftNavLink from "./LeftNavLink";
 import { Divider } from "@mui/material";
-import DashboardRoundedIcon from "@mui/icons-material/DashboardRounded";
 import LeftNavLinkDropDown from "./LeftNavLinkDropDown";
+import { Element4 } from "iconsax-react";
+import { Health } from "iconsax-react";
 
 const healthDataLinksArray = [
-  { name: "Symptoms Tracker", linkUrl: "/user/health_data/symptom_tracker" },
+  { name: "Symptoms", linkUrl: "/user/health_data/symptom_tracker" },
   { name: "Lab Report", linkUrl: "/user" },
   { name: "Health History", linkUrl: "/user" },
 ];
@@ -45,7 +46,7 @@ const LeftNav = () => {
 
         <LeftNavInnerBox>
           <LeftNavLink
-            icon={<DashboardRoundedIcon />}
+            icon={<Element4 size={20} />}
             linkUrl={"/user"}
             linkName={"Dashboard"}
             nowActive={activeLink === "Dashboard"}
@@ -53,7 +54,7 @@ const LeftNav = () => {
           />
 
           <LeftNavLinkDropDown
-            icon={<DashboardRoundedIcon />}
+            icon={<Health size={20} />}
             linkName={"Health Data"}
             nowActive={activeLink === "Health Data"}
             activateLink={makeActive}
