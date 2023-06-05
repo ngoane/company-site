@@ -1,13 +1,16 @@
 import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import styled from '@emotion/styled';
-
+import { CustomButton } from '@/styles/globalComponentsStyle';
 export const ContactContainer = styled(Stack)`
   width: 100%;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 4rem 0;
+  margin-top: 10rem;
+`
+
+export const MessageButton = styled(CustomButton)`
+  padding: 1.5rem;
 `
 
 export const FormContainer = styled(Stack)`

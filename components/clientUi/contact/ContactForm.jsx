@@ -1,6 +1,5 @@
-import { FormContainer } from './StyledContact';
+import { FormContainer, MessageButton } from './StyledContact';
 import { Stack, TextField } from '@mui/material';
-import { CustomButton } from "@/styles/globalComponentsStyle";
 
 const ContactForm = () => {
   return (
@@ -10,7 +9,7 @@ const ContactForm = () => {
         <TextField label='Full Name' variant='outlined' />
       </FormContainer>
       <TextField label='Write Your Message' variant='outlined' multiline rows={6} />
-      <CustomButton variant='contained'> Send Message</CustomButton>
+      <MessageButton variant='contained' color='primary'> Send Message</MessageButton>
     </Stack>
   )
 }
