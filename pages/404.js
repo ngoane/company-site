@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { CustomButton } from "@/styles/globalComponentsStyle";
 
 const confirmation = () => {
   return (
@@ -28,30 +27,31 @@ const confirmation = () => {
           }}
         >
           <Typography
-            variant="headerHuge"
+            variant="headlineMain"
             component="h2"
-            color="#9138e8"
+            color="accentPink"
             sx={{
-              width: "100%",
+              width: "80%",
               marginBottom: "1rem",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              fontWeight: '700'
+              fontWeight: '700',
+              textAlign: 'center'
             }}
           >
-            Success
+            Whoops! Page not found!
           </Typography>
-          <Image src="/user/Confirm__Ellipse.svg" width="100" height="100" />
+          <Image src="/user/Error 404_Iluustration.svg" width="200" height="200" />
           <Typography
             variant="body"
             sx={{
               textAlign: "center",
-              padding: "2rem 0",
+              padding: "1rem 0",
             }}
           >
-            You've successfully created an account with us
+            We are sorry! The page you’re looking for is unavailable
           </Typography>
           
           <Box
@@ -69,20 +69,9 @@ const confirmation = () => {
                 padding: '0.5rem 3rem 0.5rem 3rem'
               }}
             >
-              Login
+              Return to Homepage
             </Button>
-            <Button
-              variant="contained"
-              sx={{
-                width: "100%",
-                marginTop: "2rem",
-                backgroundColor: "#C4C2C6",
-                color: '#222',
-                padding: '0.5rem 3rem 0.5rem 3rem'
-              }}
-            >
-              Cancel
-            </Button>
+            
             
           </Box>
         </Box>
