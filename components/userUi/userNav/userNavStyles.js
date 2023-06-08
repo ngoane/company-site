@@ -57,6 +57,36 @@ export const UserIconBox = styled.i`
     active == true ? theme.palette.primary.main : "#3A3A3A"};
 `;
 
+//left nav link drop down components styles
+export const LinkContainer = styled(Accordion)`
+  &.MuiAccordion-root {
+    background-color: transparent;
+    border: none;
+    box-shadow: 0 0 0 0 transparent;
+    width: 100%;
+    padding: 0rem;
+  }
+`;
+
+export const LinkHeader = styled(AccordionSummary)`
+  padding: 0rem 1rem 0rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LinkHeaderBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+`;
+
+export const LinkBody = styled(AccordionDetails)`
+  margin-top: -1rem;
+  padding-left: 3rem;
+`;
+
 //top nav styled components
 export const TopNavBar = styled(Paper)`
   background-color: ${({ theme }) => theme.palette.whiteBg};
@@ -118,32 +148,37 @@ export const IconBox = styled.i`
     active ? theme.palette.primary.main : "transparent"};
 `;
 
-//left nav link drop down components styles
-export const LinkContainer = styled(Accordion)`
-  &.MuiAccordion-root {
-    background-color: transparent;
-    border: none;
-    box-shadow: 0 0 0 0 transparent;
-    width: 100%;
-    padding: 0rem;
-  }
+//Ai support top nav components
+
+export const AiSupportTopNavBar = styled(Paper)`
+  background-color: ${({ theme }) => theme.palette.whiteBg};
+  padding: 1rem;
+  width: 100%;
+  height: 6rem;
+  border-radius: 0;
+  border-bottom: 1px solid lightgray;
 `;
 
-export const LinkHeader = styled(AccordionSummary)`
-  padding: 0rem 1rem 0rem 0.8rem;
+export const AiSupportTopNavBarInnerBox = styled.nav`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0rem 0.5rem 0rem 1.5rem;
 `;
 
-export const LinkHeaderBox = styled.div`
-  display: flex;
+export const AiSupportTopNavLeftBox = styled(Stack)`
   align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
+  justify-content: flex-start;
 `;
 
-export const LinkBody = styled(AccordionDetails)`
-  margin-top: -1rem;
-  padding-left: 3rem;
+export const AiSupportTopNavRightBox = styled(Stack)`
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const AiSupportLogo = styled(Avatar)`
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: ${({ theme }) => theme.palette.primary.main};
 `;

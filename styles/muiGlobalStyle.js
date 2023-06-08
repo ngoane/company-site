@@ -42,13 +42,13 @@ export const customTheme = {
     color: "#3A3A3A",
 
     userLinkText: {
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       fontWeight: 500,
       fontFamily: "Lato, sans-serif",
     },
 
     userLinkTextBold: {
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       fontWeight: 700,
       fontFamily: "Lato, sans-serif",
     },
