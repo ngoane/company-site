@@ -1,8 +1,7 @@
-import { Typography, Stack, Paper } from '@mui/material';
+import { Typography, Stack, Paper, Accordion } from '@mui/material';
 import styled from '@emotion/styled';
 import { RoundedButton } from '@/styles/globalComponentsStyle';
 import Image from 'next/image';
-
 
 export const CenterTypography = styled(Typography)`
   text-align: center;
@@ -41,10 +40,22 @@ export const ImgContainer = styled.div`
 `
 export const StyledImg = styled(Image)`
   border-radius: 100%;
-  background-color: #e2e2e2;
-  padding: 2px;
+  padding: 4px;
 `
 export const LandingContainer = styled(Stack)`
   width: 100%;
   margin-top: 8rem;
+`
+
+export const StyledAccordion = styled(Accordion)`
+  box-shadow: none;
+  border: none;
+  &:before: {
+    display: none;
+  }
+  background-color: transparent;
+`
+
+export const FAQTypography = styled(Typography)`
+  color: rgb(58, 58, 58);
 `
