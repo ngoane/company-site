@@ -9,6 +9,8 @@ import DashboardVitals from "./DashboardVitals";
 import DashboardChart from "./DashboardChart";
 import Activities from "./Activities";
 import { Stack, Typography } from "@mui/material";
+import HealthDataComp from "./HealthDataComp";
+import AppointmentComp from "./AppointmentComp";
 
 const UserDashbord = () => {
   return (
@@ -42,6 +44,9 @@ const UserDashbord = () => {
               </div>
             </Stack>
           </DashboardGroupBox>
+
+          <HealthDataComp />
+          <AppointmentComp />
         </DashboardInnerRightContainer>
       </DashboardContainer>
     </>

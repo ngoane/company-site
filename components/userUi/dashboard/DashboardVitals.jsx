@@ -1,6 +1,8 @@
 import React from "react";
 import {
   DashboardGroupBox,
+  TempImage,
+  TempImageBox,
   VitalsIconBox,
   VitalsSectionBox,
 } from "./dashboardStyles";
@@ -19,19 +21,22 @@ const DashboardVitals = () => {
       <VitalsSectionBox direction={"row"} spacing={1}>
         <DashboardGroupBox
           elevation={0}
-          bgColor={"#2EB58D"}
-          compWidth={"33.3%"}
+          bgcolor={"#2EB58D"}
+          compwidth={"33.3%"}
         >
           <VitalsIconBox direction={"row"} spacing={2}>
             <Bubble />
             <Typography variant="bodyBold">Blood Glucose</Typography>
           </VitalsIconBox>
+          <TempImageBox>
+            <TempImage src="/img/userDashboardImg/bloodGroupChart.png" />
+          </TempImageBox>
         </DashboardGroupBox>
 
         <DashboardGroupBox
           elevation={0}
-          bgColor={"#F56CAE"}
-          compWidth={"33.3%"}
+          bgcolor={"#F56CAE"}
+          compwidth={"33.3%"}
         >
           <VitalsIconBox direction={"row"} spacing={2}>
             <Image
@@ -41,23 +46,29 @@ const DashboardVitals = () => {
             />
             <Typography variant="bodyBold">Blood Pressure</Typography>
           </VitalsIconBox>
+          <TempImageBox>
+            <TempImage src="/img/userDashboardImg/bloodPressureIcon.png" />
+          </TempImageBox>
         </DashboardGroupBox>
 
         <DashboardGroupBox
           elevation={0}
-          bgColor={"#AF67F5"}
-          compWidth={"33.3%"}
+          bgcolor={"#AF67F5"}
+          compwidth={"33.3%"}
         >
           <VitalsIconBox direction={"row"} spacing={2}>
             <Image src="img/userDashboardImg/pill.svg" width={20} height={20} />
             <Typography variant="bodyBold">Medication</Typography>
           </VitalsIconBox>
+          <TempImageBox>
+            <TempImage src="/img/userDashboardImg/medicationChart.png" />
+          </TempImageBox>
         </DashboardGroupBox>
 
         <DashboardGroupBox
           elevation={0}
-          bgColor={"#FA7564"}
-          compWidth={"33.3%"}
+          bgcolor={"#FA7564"}
+          compwidth={"33.3%"}
         >
           <VitalsIconBox direction={"row"} spacing={2}>
             <Image
@@ -67,6 +78,9 @@ const DashboardVitals = () => {
             />
             <Typography variant="bodyBold">Stress</Typography>
           </VitalsIconBox>
+          <TempImageBox>
+            <TempImage src="/img/userDashboardImg/stressChart.png" />
+          </TempImageBox>
         </DashboardGroupBox>
       </VitalsSectionBox>
     </>

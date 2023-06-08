@@ -4,7 +4,7 @@ import {
   CommunityCardContainer,
   CommunityMedia,
 } from "./dashboardStyles";
-import { CardContent, Typography } from "@mui/material";
+import { Button, CardContent, Typography } from "@mui/material";
 import { RoundedButton } from "@/styles/globalComponentsStyle";
 
 const CommunityCardComp = () => {
@@ -17,7 +17,10 @@ const CommunityCardComp = () => {
             <Typography variant="bodyBold">Arthritis Community</Typography>
             <Typography variant="caption">Arthritis</Typography>
           </CardContent>
-          <RoundedButton>Join</RoundedButton>
+          <RoundedButton color="primary" variant={"contained"} fullWidth>
+            Join
+          </RoundedButton>
+          {/* <Button color={"primary"}>Join</Button> */}
         </CommunityCard>
       </CommunityCardContainer>
     </>

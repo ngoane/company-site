@@ -7,11 +7,12 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
+import Image from "next/image";
 
 export const DashboardGroupBox = styled(Paper)`
   padding: 1rem;
-  background-color: ${({ bgColor }) => (bgColor ? bgColor : "white")};
-  width: ${({ compWidth }) => (compWidth ? compWidth : "auto")};
+  background-color: ${({ bgcolor }) => (bgcolor ? bgcolor : "white")};
+  width: ${({ compwidth }) => (compwidth ? compwidth : "auto")};
 `;
 
 export const DashboardContainer = styled(Stack)`
@@ -24,6 +25,20 @@ export const DashboardInnerLeftContainer = styled.section`
 
 export const DashboardInnerRightContainer = styled.section`
   width: 20%;
+`;
+
+export const TempImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+`;
+
+export const TempImageBox = styled.div`
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0rem;
+  display: grid;
+  place-content: center;
 `;
 
 // dashboard vitals signs
@@ -51,6 +66,7 @@ export const ChartHeaderBox = styled(Stack)`
 export const SelectChartRange = styled(TextField)`
   background-color: ${({ theme }) => theme.palette.violetBg};
   border: 1px solid white;
+
   &.Muitextfield-root {
     background-color: ${({ theme }) => theme.palette.violetBg};
   }
@@ -108,4 +124,31 @@ export const MeetUpAvatar = styled(Avatar)`
   height: 3rem;
 `;
 
-// body details comp
+// health data comp styles
+
+export const HealthDataContainer = styled.div`
+  width: 100%;
+  margin-top: 4rem;
+`;
+
+export const HealthDataItem = styled(Stack)`
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const HealthDataImg = styled(Image)`
+  background-color: gray;
+`;
+
+// health data comp styles
+
+export const AppointmentContainer = styled(HealthDataContainer)``;
+
+export const AppointmentDataItem = styled(Stack)`
+  align-items: center;
+  justify-content: flex-start;
+`;
+export const AppointmentAvatar = styled(Avatar)`
+  width: 30px;
+  height: 30px;
+`;
