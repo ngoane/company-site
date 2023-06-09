@@ -14,7 +14,7 @@ const NavComp = () => {
           <NavLogo src={"/logos/navLogo.png"} />
           <NavLinkContainer>
             <NavLinkWhiteText href="/">Home</NavLinkWhiteText>
-            <NavLinkWhiteText href="">About</NavLinkWhiteText>
+            <NavLinkWhiteText href="/about">About</NavLinkWhiteText>
             <NavLinkWhiteText href="/blog">Blog</NavLinkWhiteText>
             <NavLinkWhiteText href="/contact">Contact</NavLinkWhiteText>
           </NavLinkContainer>

@@ -21,6 +21,8 @@ export const customTheme = {
 
     accent: "#FCAE39",
 
+    lightBg: "rgba(145, 56, 232, 0.64);",
+
     accentPink: "#E31276",
 
     customRed: "#E31276",
