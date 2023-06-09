@@ -624,9 +624,9 @@ const FAQ = () => {
 
 const LandingClosing = () => {
   return (
-    <div style={{ margin: "3% 10% 0 10%"}}>
+    <div style={{ margin: "3% 10% 0 10%", padding: "10% 0"}}>
     <Grid container>
-      <Grid item xs={5}>
+      <Grid item xs={7}>
         <Stack spacing={4}>
         <Typography>
           <Typography variant="headerMainBold">Create your Account</Typography>
@@ -650,13 +650,23 @@ const LandingClosing = () => {
         </QuickAccessButton>
         </Stack>
       </Grid>
-      <Grid item xs={7}>
+      <Grid item xs={5}>
+        <div style={{ position: "relative", margin: "30% 0"}}>
         <Image
-          src='landing/Image_6.svg'
-          width={512}
-          height={512}
+          style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", marginTop: "6rem"}}
+          src='landing/doc_bg.svg'
+          width={516}
+          height={516}
           alt="Doctor Image"
         />
+        <Image
+          style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", marginRight: "40%"}}
+          src='landing/Image_6.svg'
+          width={600}
+          height={600}
+          alt="Doctor Image"
+        />
+        </div>
     </Grid>
     </Grid>
     </div>
