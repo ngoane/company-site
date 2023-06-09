@@ -229,7 +229,7 @@ export const AboutTeam = () => {
     <Grid container sx={{ padding: "3rem" }}>
       <Grid item xs={3}>
         <Stack spacing={2}>
-          <Stack sx={{ paddingLeft: "8rem"}}>
+          <Stack sx={{ paddingLeft: "40%"}}>
             <Image
               src={"/about/obed.svg"}
               height={65}
@@ -247,7 +247,7 @@ export const AboutTeam = () => {
       </Grid>
       <Grid item xs={3}>
         <Stack spacing={2}>
-          <Stack sx={{ paddingLeft: "8rem"}}>
+          <Stack sx={{ paddingLeft: "40%"}}>
             <Image
               src={"/about/law.svg"}
               height={65}
@@ -265,7 +265,7 @@ export const AboutTeam = () => {
       </Grid>
       <Grid item xs={3}>
         <Stack spacing={2}>
-          <Stack sx={{ paddingLeft: "8rem"}}>
+          <Stack sx={{ paddingLeft: "40%"}}>
             <Image
               src={"/about/muk.svg"}
               height={65}
@@ -283,7 +283,7 @@ export const AboutTeam = () => {
       </Grid>
       <Grid item xs={3}>
         <Stack spacing={2}>
-          <Stack sx={{ paddingLeft: "8rem"}}>
+          <Stack sx={{ paddingLeft: "40%"}}>
             <Image
               src={"/about/max.svg"}
               height={65}
