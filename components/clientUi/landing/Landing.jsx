@@ -55,12 +55,14 @@ export const LandingIntro = () => {
           </Typography>
           <Typography>
             <Typography variant='title'>Did you know that every year, over 15 million people between the </Typography>
-            <Typography variant='title'>ages of 30 and 69 die prematurely from chronic diseases such as heart disease, cancer, and diabetes?</Typography>
+            <Typography variant='title'>ages of 30 and 69 die prematurely from chronic diseases such as</Typography>
+            <Typography variant='title'>heart disease, cancer, and diabetes?</Typography>
           </Typography>
           <Typography>
             <Typography variant='title'>But these deaths are preventable with the right care and support.</Typography>
             <Typography variant='title'>Ngoane is on a mission to change the narrative. Join us in the fight</Typography>
-            <Typography variant='title'>against chronic diseases and help us build a healthier, more resilient Africa.</Typography>
+            <Typography variant='title'>against chronic diseases and help us build a healthier, more resilient</Typography>
+            <Typography variant='title'>Africa.</Typography>
           </Typography>
           <QuickAccessButton variant='contained' color='primary' size='small'>
             <Stack spacing={2} direction='row'>
