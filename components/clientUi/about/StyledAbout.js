@@ -3,7 +3,8 @@ import { Typography } from "@mui/material";
 
 
 export const StyledSection = styled.section`
-  background-image: url('/about/Image_2.svg'), None;
+  width: 100%;
+  background-image: url('/about/Image_1.svg'), None;
   background-position: center;
   background-repeat: no-repeat;
   background-color: ${( { theme }) => theme.palette.lightBg};
@@ -17,5 +18,4 @@ export const StyledSection = styled.section`
 
 export const CenterTypography = styled(Typography)`
   text-align: center;
-  color: #ffffff;
 `

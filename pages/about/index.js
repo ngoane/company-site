@@ -3,7 +3,7 @@ import { AboutApproach, AboutGoal, AboutInfo, AboutIntro, AboutStory, AboutTeam 
 
 const About = () => {
   return (
-    <Stack spacing={4}>
+    <Stack spacing={8}>
       <AboutIntro />
       <AboutInfo />
       <AboutGoal />
