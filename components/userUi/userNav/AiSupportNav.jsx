@@ -17,7 +17,7 @@ const AiSupportNav = () => {
       <AiSupportTopNavBar elevation={0}>
         <AiSupportTopNavBarInnerBox>
           <AiSupportTopNavLeftBox direction={"row"} spacing={2}>
-            <AiSupportLogo />
+            <AiSupportLogo src="/img/Ai_support_logo.png" />
             <div>
               <Typography variant="titleBold">AI Health Support</Typography>
               <Typography variant="caption" color={"#2D9350"}>
@@ -35,7 +35,7 @@ const AiSupportNav = () => {
                 horizontal: "left",
               }}
             >
-              <Avatar sx={{ width: "3rem", height: "3rem" }} />
+              <Avatar sx={{ width: "2rem", height: "2rem" }} />
             </Badge>
 
             <TopNavNotification badgeContent={7} color="error">

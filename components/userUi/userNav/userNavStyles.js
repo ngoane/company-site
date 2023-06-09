@@ -152,7 +152,7 @@ export const IconBox = styled.i`
 
 export const AiSupportTopNavBar = styled(Paper)`
   background-color: ${({ theme }) => theme.palette.whiteBg};
-  padding: 1rem;
+  padding: 2rem 0rem 0rem 0rem;
   width: 100%;
   height: 6rem;
   border-radius: 0;
@@ -178,7 +178,6 @@ export const AiSupportTopNavRightBox = styled(Stack)`
 `;
 
 export const AiSupportLogo = styled(Avatar)`
-  width: 3.5rem;
-  height: 3.5rem;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  width: 2.5rem;
+  height: 2.5rem;
 `;
