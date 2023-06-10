@@ -18,6 +18,7 @@ export const TopNavBox = styled.nav`
   padding: ${({ ai }) => (ai === "true" ? "0rem" : "1rem 0rem 1rem 0.5rem")};
   /* background-color: blue; */
   background-color: ${({ theme }) => theme.palette.bodyBg};
+  z-index: 1;
 `;
 
 export const UserBody = styled.section`
