@@ -12,7 +12,11 @@ import BlogFilterBox from "@/components/clientUi/blog/BlogFilterBox";
 const index = () => {
   return (
     <>
-      <BlogHeroContainer />
+      <BlogHeroContainer>
+        <Typography variant="headerMainBold" color={"white"}>
+          BLOG
+        </Typography>
+      </BlogHeroContainer>
       <CompBody>
         <BlogFilterBox />
         <Typography variant="headlineMainBold" marginTop={"4rem"}>
