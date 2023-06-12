@@ -10,7 +10,7 @@ const AiSupportComp = () => {
   const [messages, setMessages] = useState([
     {
       role: "system",
-      content: "You are a chatbot that is helpful and replies concisely",
+      content: "You are a personal health assistant AI with expertise in chronic diseases. As an AI you strictly respond to only health questions and refuse to answer unrelated questions. As an AI, your response should be as brief and concise as possible.",
     },
   ]);
 

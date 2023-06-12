@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
     console.log("backend message", messages);
 
-    console.log("ai key", process.env.OPENAI_API_KEY);
+    // console.log("ai key", process.env.OPENAI_API_KEY);
 
     // Sending a request to the OpenAI create chat completion endpoint
 
@@ -24,6 +24,8 @@ export default async function handler(req, res) {
       model: "gpt-3.5-turbo",
       messages,
     };
+
+    console.log(`OPENAI_API_KEY: ${process.env.OPENAI_API_KEY}`);
 
     // Sending our request using the Fetch API
     const createChatCompletionRes = await fetch(
