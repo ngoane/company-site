@@ -19,7 +19,6 @@ const SingleBlogPostDetail = ({ singleBlogArticle }) => {
       ? singleBlogArticle.Categories.data[0].attributes.name
       : "GENERAL";
 
-  let imageUrlString = `http://44.203.73.117:1337${singleBlogArticle.Featured_Image.data.attributes.url}`;
   return (
     <>
       {/* {console.log(singleBlogArticle)} */}
@@ -58,7 +57,9 @@ const SingleBlogPostDetail = ({ singleBlogArticle }) => {
         </CompBody>
 
         {/* picture section  */}
-        <BlogDetailImage src={imageUrlString} />
+        <BlogDetailImage
+          src={`http://44.203.73.117:1337${singleBlogArticle.Featured_Image.data.attributes.url}`}
+        />
 
         {/* Blog article details seection  */}
         <CompBody>

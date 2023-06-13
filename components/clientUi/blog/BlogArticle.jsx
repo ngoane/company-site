@@ -30,11 +30,12 @@ const BlogArticle = ({ blogPosts }) => {
               : "GENERAL";
 
           let titleandbody = item.attributes.Title.split(":");
-          let imageUrlString = `http://44.203.73.117:1337${item.attributes.Featured_Image.data.attributes.url}`;
           return (
             <SingleBlogItemContainer key={item.id} href={`/blog/${item.id}`}>
               <Card width={"100%"} elevation={8}>
-                <ArticleImage image={imageUrlString} />
+                <ArticleImage
+                  image={`http://44.203.73.117:1337${item.attributes.Featured_Image.data.attributes.url}`}
+                />
                 <CardContent>
                   <BlogChip>
                     <Typography

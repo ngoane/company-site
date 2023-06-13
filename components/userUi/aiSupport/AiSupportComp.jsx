@@ -5,18 +5,23 @@ import ClientChartComp from "./ClientChartComp";
 import AssistantChartComp from "./AssistantChartComp";
 import { Typography } from "@mui/material";
 // import axios from "axios";
+import dayjs from "dayjs";
 
 const AiSupportComp = () => {
   const [messages, setMessages] = useState([
     {
       role: "system",
-      content: "You are a personal health assistant AI with expertise in chronic diseases. As an AI you strictly respond to only health questions and refuse to answer unrelated questions. As an AI, your response should be as brief and concise as possible.",
+      content:
+        "You are a personal health assistant AI with expertise in chronic diseases. As an AI you strictly respond to only health questions and refuse to answer unrelated questions. As an AI, your response should be as brief and concise as possible.",
     },
   ]);
 
   // An array of the messages that make up the chat
+  const [conversation, setConversation] = useState([]);
   const [newMessageText, setNewMessageText] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
+
+  const aiSupportBodyRef = useRef();
 
   // `onChange` event handler to update `newMessageText` as the user types
   const onChangeMessage = (event) => {
@@ -25,10 +30,15 @@ const AiSupportComp = () => {
 
   // `onClick` event handler to create a new chat
   const onClickSend = () => {
+    let time = dayjs(dayjs().$d).format("hh:mm a");
     setMessages([...messages, { role: "user", content: newMessageText }]);
+    setConversation([
+      ...conversation,
+      { role: "user", content: newMessageText, time },
+    ]);
     setLoadingStatus(true);
     setNewMessageText("");
-    console.log("full message", messages);
+    // console.log("conversations list", conversation);
   };
 
   // `onKeyDown` event handler to send a message when the return key is hit
@@ -54,13 +64,18 @@ const AiSupportComp = () => {
         });
 
         const responseBody = await response.json();
-        console.log("on response :", responseBody);
-        // const reply =
-        //   response.status === 200
-        //     ? responseBody.reply
-        //     : responseBody.error.reply;
 
-        // setMessages([...messages, reply]);
+        const reply =
+          response.status === 200
+            ? responseBody.reply
+            : responseBody.error.reply;
+        setMessages([...messages, reply]);
+        let convoReply = {
+          ...reply,
+          time: dayjs(dayjs().$d).format("hh:mm a"),
+        };
+        setConversation([...conversation, convoReply]);
+        // console.log("on response reply :", reply);
       } catch {
         // Catch and handle any unexpected errors
         const reply = {
@@ -68,7 +83,7 @@ const AiSupportComp = () => {
           content: "An error has occured.",
         };
 
-        console.log("on response error:", reply);
+        // console.log("on response error:", reply);
         // setMessages([...messages, reply]);
       }
       // Set `setLoadingStatus` to false
@@ -83,20 +98,31 @@ const AiSupportComp = () => {
     }
   }, [loadingStatus]);
 
+  useEffect(() => {
+    aiSupportBodyRef.current.scrollTop = aiSupportBodyRef.current.scrollHeight;
+    // console.log(aiSupportBodyRef.current);
+  }, [conversation]);
+
   return (
     <>
+      {/* {console.log("conversation :", conversation)} */}
       <AisupportBodyContainer>
-        <AiSupportBody>
-          <Typography
-            variant="caption"
-            sx={{ margin: "1rem 0rem", textAlign: "center" }}
-          >
-            TODAY, WED - MAR 3, 2022
-          </Typography>
-          <ClientChartComp />
-          <AssistantChartComp />
-          <ClientChartComp />
-          <AssistantChartComp />
+        <AiSupportBody ref={aiSupportBodyRef}>
+          {conversation.map((item, index) => {
+            return item.role === "user" ? (
+              <ClientChartComp query={item} key={index} />
+            ) : (
+              <AssistantChartComp response={item} key={index} />
+            );
+          })}
+          {loadingStatus && (
+            <Typography
+              variant="caption"
+              sx={{ margin: "1rem 0rem", textAlign: "center" }}
+            >
+              AI,GENERATING RESPONSE...
+            </Typography>
+          )}
         </AiSupportBody>
         <EnquiryInput
           onQuery={onChangeMessage}

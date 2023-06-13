@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     // Processing the request body
     const messages = req.body.messages;
 
-    console.log("backend message", messages);
+    // console.log("backend message", messages);
 
     // console.log("ai key", process.env.OPENAI_API_KEY);
 
@@ -23,7 +23,10 @@ export default async function handler(req, res) {
     const createChatCompletionReqParams = {
       model: "gpt-3.5-turbo",
       messages,
+      temperature: 0.1,
     };
+
+    console.log(JSON.stringify(createChatCompletionReqParams));
 
     console.log(`OPENAI_API_KEY: ${process.env.OPENAI_API_KEY}`);
 
@@ -34,7 +37,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + process.env.OPENAI_API_KEY,
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
         },
         body: JSON.stringify(createChatCompletionReqParams),
       }
@@ -56,16 +59,16 @@ export default async function handler(req, res) {
     const usage = createChatCompletionResBody.usage;
 
     // Logging the results
-    console.log(`Create chat completion request was successful. Results:
-Replied message: 
+    //     console.log(`Create chat completion request was successful. Results:
+    // Replied message:
 
-${JSON.stringify(reply)}
+    // ${JSON.stringify(reply)}
 
-Token usage:
-Prompt: ${usage.prompt_tokens}
-Completion: ${usage.completion_tokens}
-Total: ${usage.total_tokens}
-`);
+    // Token usage:
+    // Prompt: ${usage.prompt_tokens}
+    // Completion: ${usage.completion_tokens}
+    // Total: ${usage.total_tokens}
+    // `);
 
     // Sending a successful response for our endpoint
     res.status(200).json({ reply });
@@ -73,10 +76,10 @@ Total: ${usage.total_tokens}
     // Error handling
 
     // Server-side error logging
-    console.log(`Thrown error: ${error.message}
-Status code: ${error.statusCode}
-Error: ${JSON.stringify(error.body)}
-`);
+    //     console.log(`Thrown error: ${error.message}
+    // Status code: ${error.statusCode}
+    // Error: ${JSON.stringify(error.body)}
+    // `);
 
     // Sending an unsuccessful response for our endpoint
     res.status(error.statusCode || "500").json({
