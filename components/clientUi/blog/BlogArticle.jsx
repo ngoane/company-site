@@ -15,26 +15,15 @@ import {
   Divider,
 } from "@mui/material";
 
-import axios from "axios";
 import dayjs from "dayjs";
 
-const BlogArticle = () => {
-  const [blogArticle, setBlogArticle] = useState([]);
-
-  useEffect(() => {
-    const fetchBlogArticle = async () => {
-      const blogArticles = await axios.get(
-        "http://44.203.73.117:1337/api/blogs?populate=*"
-      );
-      setBlogArticle(blogArticles.data.data);
-      console.log(blogArticles.data.data);
-    };
-    fetchBlogArticle();
-  }, []);
+const BlogArticle = ({ blogPosts }) => {
   return (
     <>
-      {blogArticle.length > 0 &&
-        blogArticle.map((item) => {
+      {console.log(blogPosts)}
+
+      {blogPosts.length > 0 &&
+        blogPosts.map((item) => {
           let caption =
             item.attributes.Categories.data.length > 0
               ? item.attributes.Categories.data[0].attributes.name
