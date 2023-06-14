@@ -39,6 +39,7 @@ export const createUser = async (firstName, lastName, email, phoneNumber, passwo
   }
   const hashedPW = await hashPWD(password);
   const user = new User({ firstName, lastName, email, phoneNumber, password: hashedPW, gender, profession });
+  console.log(user);
   try {
     await user.save()
   } catch {

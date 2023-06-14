@@ -2,9 +2,13 @@ import { Box, Button, Link, TextField, Typography, Divider, Icon, OutlinedInput,
 import * as React from 'react'
 import { Google, Facebook } from '@mui/icons-material'
 import { useState } from 'react'
+import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react'
+
 
 
 function SigninForm() {
+  const router = useRouter();
   const [user, setUser] = useState({email: '', password: ''});
   const setEmail = (e) => {
     setUser((values) => ({...values, email: e.target.value}));
@@ -13,8 +17,18 @@ function SigninForm() {
     setUser((values) => ({...values, password: e.target.value}));
   }
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const res = await signIn('credentials', { redirect: false, email: user.email, password: user.password });
+    console.log(res);
+    if (res && !res.ok) {
+      return { error: true, message: 'Invalid credential'};
+    }
+    router.push('/user');
+  }
+
   return (
-    <div>
+    <form onSubmit={handleLogin}>
       <Box sx={{ 
         display: "flex",
         flexDirection: "column",
@@ -29,10 +43,10 @@ function SigninForm() {
         }}>FORGOT PASSWORD?</Link>
         
       </Box>
-      <Button variant='contained' sx= {{
+      <Button variant='contained' type='submit' sx= {{
         width: '100%',
         marginTop: '2rem',
-      }} onClick={ () => console.log(user)}>Sign In</Button>
+      }}>Sign In</Button>
 
       <Box sx={{
         margin: '3rem 0',
@@ -81,7 +95,7 @@ function SigninForm() {
           Sign In with Facebook
         </Button>
       </Stack>
-    </div>
+    </form>
   )
 }
 

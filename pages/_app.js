@@ -10,7 +10,7 @@ import { SessionProvider } from "next-auth/react";
 
 const theme = createTheme(customTheme);
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps} }) {
   const [layout, setLayout] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }) {
   });
 
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
         <GlobalStyles styles={MuiGlobalStyle} />
         {!layout ? (

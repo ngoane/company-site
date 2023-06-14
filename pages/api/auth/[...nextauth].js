@@ -1,43 +1,49 @@
 import { getUserByEmail } from "@/controllers/userController";
 import { checkPW } from "@/utils/utils";
 import NextAuth from "next-auth/next";
-import { CredentialsProvider } from "next-auth/providers";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 const options = {
   providers: [
     CredentialsProvider({
-        id: 'credentials',
+        type: 'credentials',
         name: 'Credentials',
         credentials: {
-          email: { label: 'email', type: 'text'},
-          password: { label: 'password', type: 'password'},
         },
 
         async authorize(Credentials) {
-            const user = await getUserByEmail(credentials.email, selectPW=true);
+            const user = await getUserByEmail(Credentials.email, true);
             if (!user) {
               throw new Error('Invalid credential');
             }
-            if (checkPW(credentials.password, user.password)) {
+            const isValid = await checkPW(Credentials.password, user.password);
+            if (!isValid) {
               throw new Error('Invalid credential');
             }
-            return user;
+            return {
+              email: user.email,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              isAdmin: user.isAdmin
+            };
         }
     })
   ],
   pages: {
-    signIn: '/auth/login'
+    signIn: '/auth/login',
+    signOut: '/auth/logout'
   },
   session: {
-    strategy: 'jwt'
+    strategy: 'jwt',
+    maxAge: 60 * 10,
   },
   callbacks: {
     jwt: async ( { token, user}) => {
-      user && (token.payload = { email: user.email, })
+      user && (token.user = user)
       return token;
     },
     session: async ( { session, token }) => {
-      session.payload = token.payload;
+      session.user = token?.user;
       return session;
     }
   }
