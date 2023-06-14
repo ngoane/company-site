@@ -1,4 +1,5 @@
 const { createUser } = require("@/controllers/userController");
+import { sendConfirmationEmail } from '@/utils/utils';
 import Cors from 'cors'
 const cors = Cors({
     methods: ['POST', 'GET', 'HEAD'],
@@ -26,6 +27,8 @@ const signUp = async (req, res) => {
   if (user.error) {
     return res.status(400).json({ user });
   }
+  const name = `${firstName} ${lastName}`;
+  await sendConfirmationEmail(email, name, 'google.com');
   return res.status(201).json({ user});
 }
 

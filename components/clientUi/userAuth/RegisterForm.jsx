@@ -22,16 +22,7 @@ import * as React from "react";
 import { Google, Facebook } from "@mui/icons-material";
 import Select from "@mui/material/Select";
 import axios from "axios";
-
-const handleSignUp = async ( objs ) => {
-  const BASEURL = process.env.BASE_URL ?? 'http://127.0.0.1:3000/api';
-  try {
-    const user = await axios.post(`${BASEURL}/auth/signup`, objs);
-    return user;
-  } catch (err) {
-    return {error: 'Couldn"t register user'};
-  }
-}
+import { useRouter } from "next/router";
 
 function ResgiterForm() {
   const [user, setUser] = React.useState ({firstName: '', lastName: '', email: '', phoneNumber: '', password: '', gender: '', profession: ''});
@@ -42,6 +33,18 @@ function ResgiterForm() {
   const setPassword = (e) => setUser(value => ({...value, password: e.target.value}));
   const setGender = (e) => setUser(value => ({...value, gender: e.target.value}));
   const setProfession = (e) => setUser(value => ({...value, profession: e.target.value}));
+
+  const router = useRouter();
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    const BASEURL = process.env.BASE_URL ?? 'http://127.0.0.1:3000/api';
+    try {
+      await axios.post(`${BASEURL}/auth/signup`, user);
+      router.push('/auth/email_verification');
+    } catch (err) {
+      return {error: 'Couldn"t register user'};
+    }
+ }
 
   return (
     <div>
@@ -136,7 +139,7 @@ function ResgiterForm() {
           width: "100%",
           marginTop: "2rem",
         }}
-        onClick={() => handleSignUp(user)}
+        onClick={handleSignUp}
       >
         Register
       </Button>
