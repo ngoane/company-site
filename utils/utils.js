@@ -1,4 +1,3 @@
-
 const bcrypt = require('bcrypt');
 
 export const hashPWD = async (password) => await bcrypt.hash(password, 12);
