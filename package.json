@@ -16,11 +16,8 @@
     "@mui/styled-engine-sc": "^5.12.0",
     "@mui/x-date-pickers": "^6.4.0",
     "axios": "^1.4.0",
-<<<<<<< HEAD
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
-=======
->>>>>>> d7ce5acc53d81f412372f884b1f860c40c76a83b
     "dayjs": "^1.11.7",
     "iconsax-react": "^0.0.8",
     "mongoose": "^7.2.3",
