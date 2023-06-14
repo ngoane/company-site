@@ -10,6 +10,7 @@ import { Divider } from "@mui/material";
 import LeftNavLinkDropDown from "./LeftNavLinkDropDown";
 import { Element4 } from "iconsax-react";
 import { Health } from "iconsax-react";
+import { DeviceMessage } from "iconsax-react";
 
 const healthDataLinksArray = [
   { name: "Symptoms", linkUrl: "/user/health_data/symptom_tracker" },
@@ -59,6 +60,14 @@ const LeftNav = () => {
             nowActive={activeLink === "Health Data"}
             activateLink={makeActive}
             linksArray={healthDataLinksArray}
+          />
+
+          <LeftNavLink
+            icon={<DeviceMessage size={20} />}
+            linkUrl={"/user/ai_support"}
+            linkName={"AI Health Support"}
+            nowActive={activeLink === "AI Health Support"}
+            activateLink={makeActive}
           />
         </LeftNavInnerBox>
       </LeftNavBox>

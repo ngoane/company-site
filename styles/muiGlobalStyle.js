@@ -21,6 +21,8 @@ export const customTheme = {
 
     accent: "#FCAE39",
 
+    lightBg: "rgba(145, 56, 232, 0.64);",
+
     accentPink: "#E31276",
 
     customRed: "#E31276",
@@ -42,13 +44,13 @@ export const customTheme = {
     color: "#3A3A3A",
 
     userLinkText: {
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       fontWeight: 500,
       fontFamily: "Lato, sans-serif",
     },
 
     userLinkTextBold: {
-      fontSize: "1rem",
+      fontSize: "0.8rem",
       fontWeight: 700,
       fontFamily: "Lato, sans-serif",
     },

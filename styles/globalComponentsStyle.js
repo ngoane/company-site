@@ -16,6 +16,12 @@ export const CustomButton = styled(Button)`
   text-transform: none;
 `;
 
+// export const CustomButtonRounded = styled(Button)`
+//   border-radius: 5rem;
+//   box-shadow: none;
+//   text-transform: none;
+// `;
+
 export const RoundedButton = styled(Button)`
   border-radius: 5rem;
   box-shadow: none;
