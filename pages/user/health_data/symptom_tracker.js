@@ -64,11 +64,11 @@ function symptom_tracker({ symptoms }) {
   };
 
   const sendRecord = async () => {
-    // console.log(symptomRecord);
-    const response = await axios.post(
-      "http://localhost:3000/api/symptom",
-      symptomRecord
-    );
+    console.log(symptomRecord);
+    // const response = await axios.post(
+    //   "http://localhost:3000/api/symptom_trackers",
+    //   symptomRecord
+    // );
   };
 
   return (
