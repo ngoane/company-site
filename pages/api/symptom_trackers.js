@@ -6,12 +6,12 @@ export default function handler(req, res) {
     const { method } = req;
   
     // Handle GET request to fetch all symptom trackers
-    if (method === 'GET') {
-      getAllSymptomTrackers(req, res);
+    if (method === 'GET' && req.query.id) {
+      getOneSymptomTracker(req, res);
     }
     // Handle GET request to fetch a single symptom tracker
-    else if (method === 'GET' && req.query.id) {
-      getOneSymptomTracker(req, res);
+    else if (method === 'GET') {
+      getAllSymptomTrackers(req, res);
     }
     // Handle POST request to create a new symptom tracker
     else if (method === 'POST') {
