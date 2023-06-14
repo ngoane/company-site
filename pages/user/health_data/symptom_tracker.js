@@ -18,6 +18,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import dayjs from "dayjs";
+import axios from "axios";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -31,29 +33,56 @@ const rows = [
   createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
 ];
 
+let symptomRecords = {
+  symptom: "",
+  date: "",
+  time: "",
+  trigger: "",
+  feeling: "",
+};
+
 function symptom_tracker({ symptoms }) {
-  
-  const [selectedSymptom, setSelectedSymptom] = useState('');
+  const [symptomRecord, setSymptomRecord] = useState(symptomRecords);
 
-    const handleSymptomChange = (event) => {
-      setSelectedSymptom(event.target.value);
-    };
-  
+  // make a post request to 'localhost:3000/api/user'
 
+  const handleTextFieldChange = (e) => {
+    setSymptomRecord((prevState) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
 
-    // make a post request to 'localhost:3000/api/user'
+  const handleDateTimeChange = (value, name) => {
+    if (name === "date") {
+      value = dayjs(value.$d).format("MM/DD/YYYY");
+    } else {
+      value = dayjs(value.$d).format("hh:mm a");
+    }
+    setSymptomRecord((prevState) => {
+      return { ...prevState, [name]: value };
+    });
+  };
+
+  const sendRecord = async () => {
+    // console.log(symptomRecord);
+    const response = await axios.post(
+      "http://localhost:3000/api/symptom",
+      symptomRecord
+    );
+  };
 
   return (
     <>
+      {console.log("sysmtom init state :", symptomRecord)}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Typography variant="headerMain" sx={{ marginBottom: "1.5rem" }}>
+        <Typography variant="headlineMainBold" sx={{ marginBottom: "1.5rem" }}>
           SYMPTOM TRACKER
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
           <Card
             sx={{
               width: "60%",
-              height: "70vh",
+              height: "auto",
               padding: "1.5rem",
             }}
           >
@@ -74,6 +103,7 @@ function symptom_tracker({ symptoms }) {
                 label="Select Month"
                 openTo="month"
                 views={["year", "month"]}
+                size="small"
                 sx={{ width: "70%", alignContent: "flex-end" }}
               />
             </Box>
@@ -111,7 +141,7 @@ function symptom_tracker({ symptoms }) {
           <Card
             sx={{
               width: "30%",
-              height: "70vh",
+              height: "auto",
               padding: "1.5rem",
             }}
           >
@@ -124,9 +154,9 @@ function symptom_tracker({ symptoms }) {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={selectedSymptom}
                   label="Age"
-                  onChange={handleSymptomChange}
+                  name="symptom"
+                  onChange={(e) => handleTextFieldChange(e)}
                 >
                   {symptoms.map((symptom) => (
                     <MenuItem key={symptom.id} value={symptom.name}>
@@ -140,10 +170,14 @@ function symptom_tracker({ symptoms }) {
                   label="Date"
                   openTo="day"
                   views={["year", "month", "day"]}
+                  onChange={(v) => handleDateTimeChange(v, "date")}
                 />
               </FormControl>
               <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
-                <TimePicker label="Time" />
+                <TimePicker
+                  label="Time"
+                  onChange={(v) => handleDateTimeChange(v, "time")}
+                />
               </FormControl>
               <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
                 <TextField
@@ -152,6 +186,8 @@ function symptom_tracker({ symptoms }) {
                   variant="outlined"
                   multiline
                   rows={1}
+                  name="trigger"
+                  onChange={(e) => handleTextFieldChange(e)}
                 />
               </FormControl>
               <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
@@ -161,6 +197,8 @@ function symptom_tracker({ symptoms }) {
                   variant="outlined"
                   multiline
                   rows={3}
+                  name="feeling"
+                  onChange={(e) => handleTextFieldChange(e)}
                 />
               </FormControl>
 
@@ -171,7 +209,9 @@ function symptom_tracker({ symptoms }) {
                   paddingBottom: "1rem",
                 }}
               >
-                <Button variant="contained">Record</Button>
+                <Button variant="contained" onClick={sendRecord}>
+                  Record
+                </Button>
               </FormControl>
             </Paper>
           </Card>

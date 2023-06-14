@@ -5,8 +5,8 @@ import Link from "next/link";
 // Blog hero section styled
 export const BlogHeroContainer = styled.div`
   width: 100%;
-  height: 34rem;
-  background: url("../../../public/img/blogbg.png"), rgba(145, 56, 232, 0.4);
+  height: 30rem;
+  background: url("/img/blogbg.png") rgba(145, 56, 232, 0.4);
   display: grid;
   place-content: center;
 `;
@@ -99,4 +99,6 @@ export const BlogDetailContentBody = styled.section`
   flex-direction: column;
   gap: 1rem;
   width: 60%;
+  font-size: 1.25rem;
+  line-height: 2rem;
 `;
