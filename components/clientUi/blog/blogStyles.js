@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
 import { CardMedia, Chip, Paper, Stack } from "@mui/material";
+import Link from "next/link";
 
 // Blog hero section styled
 export const BlogHeroContainer = styled.div`
   width: 100%;
   height: 34rem;
-  background-color: lightgray;
+  background: url("../../../public/img/blogbg.png"), rgba(145, 56, 232, 0.4);
+  display: grid;
+  place-content: center;
 `;
 
 export const BlogHeroImage = styled.img`
@@ -41,14 +44,16 @@ export const BlogArticleListContainer = styled(Stack)`
   gap: 1.5rem;
 `;
 
-export const SingleBlogItemContainer = styled.div`
+export const SingleBlogItemContainer = styled(Link)`
   width: 32%;
+  text-decoration: none;
 `;
 
 export const ArticleImage = styled(CardMedia)`
   width: 100%;
   height: 15rem;
   background-color: lightblue;
+  object-fit: contain;
 `;
 
 export const BlogChip = styled.div`
@@ -87,4 +92,11 @@ export const BlogDetailImage = styled.img`
   background-color: lightgray;
   border-radius: 1rem;
   object-fit: cover;
+`;
+
+export const BlogDetailContentBody = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 60%;
 `;

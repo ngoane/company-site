@@ -6,17 +6,14 @@ import {
 } from "./aiSupportStyles";
 import { Avatar, Typography } from "@mui/material";
 
-const AssistantChartComp = () => {
+const AssistantChartComp = ({ response }) => {
   return (
     <>
       <AssistantChartBox>
         <Typography variant="caption" sx={{ textAlign: "start" }}>
-          AI, 9:30pm
+          AI, {response.time}
         </Typography>
-        <AssistantChart>
-          I was recently diagnosed with diabetes. Can you please tell me how to
-          treat it? Suggest ways I can effectively control diabetes.
-        </AssistantChart>
+        <AssistantChart>{response.content}</AssistantChart>
         <AssistantAvatarBox>
           <Avatar
             sx={{

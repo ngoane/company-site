@@ -1,5 +1,6 @@
 import {
   BlogChip,
+  BlogDetailContentBody,
   BlogDetailImage,
   BlogHeaderContainer,
 } from "@/components/clientUi/blog/blogStyles";
@@ -7,75 +8,109 @@ import { CompBody } from "@/styles/globalComponentsStyle";
 import { Typography, Stack, Avatar, Divider } from "@mui/material";
 import React from "react";
 
-const SingleBlogPostDetail = () => {
+import axios from "axios";
+import dayjs from "dayjs";
+import ReactMarkdown from "react-markdown";
+// import remarkGfm from "remark-gfm";
+
+const SingleBlogPostDetail = ({ singleBlogArticle }) => {
+  let caption =
+    singleBlogArticle.Categories.data.length > 0
+      ? singleBlogArticle.Categories.data[0].attributes.name
+      : "GENERAL";
+
   return (
-    <div style={{ marginTop: "8rem" }}>
-      {/* header section of the single blog post  */}
-      <CompBody>
-        <BlogHeaderContainer>
-          <BlogChip>Diet</BlogChip>
-          <Typography variant="headlineMainBold">
-            Food Culture in Ghana and its Impact on Health
-          </Typography>
-          <Stack
-            direction={"row"}
-            sx={{
-              alignitems: "cente",
-              justifyContent: "flex-start",
-              marginTop: "1rem",
-              gap: "1.5rem",
-            }}
-          >
+    <>
+      {/* {console.log(singleBlogArticle)} */}
+      <div style={{ marginTop: "8rem" }}>
+        {/* header section of the single blog post  */}
+        <CompBody>
+          <BlogHeaderContainer>
+            <BlogChip>{caption.toUpperCase()}</BlogChip>
+            <Typography variant="headlineMainBold">
+              {singleBlogArticle.Title}
+            </Typography>
             <Stack
               direction={"row"}
-              spacing={2}
-              sx={{ alignitems: "center", justifyContent: "center" }}
+              sx={{
+                alignitems: "cente",
+                justifyContent: "flex-start",
+                marginTop: "1rem",
+                gap: "1.5rem",
+              }}
             >
-              <Avatar sx={{ width: 24, height: 24 }} />
-              <Typography variant="label"> Jesica Koch</Typography>
+              <Stack
+                direction={"row"}
+                spacing={2}
+                sx={{ alignitems: "center", justifyContent: "center" }}
+              >
+                <Avatar sx={{ width: 24, height: 24 }} />
+                <Typography variant="label"> Jesica Koch</Typography>
+              </Stack>
+              <Divider orientation="vertical" variant="middle" flexItem />
+              <Typography variant="label">
+                {" "}
+                {dayjs(singleBlogArticle.publishedAt).format("MMMM DD YYYY")}
+              </Typography>
             </Stack>
-            <Divider orientation="vertical" variant="middle" flexItem />
-            <Typography variant="label"> 02 december 2022</Typography>
+          </BlogHeaderContainer>
+        </CompBody>
+
+        {/* picture section  */}
+        <BlogDetailImage
+          src={`http://44.203.73.117:1337${singleBlogArticle.Featured_Image.data.attributes.url}`}
+        />
+
+        {/* Blog article details seection  */}
+        <CompBody>
+          <Stack
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "3rem",
+            }}
+            spacing={2}
+          >
+            <BlogDetailContentBody>
+              <ReactMarkdown children={singleBlogArticle.Content} />
+            </BlogDetailContentBody>
           </Stack>
-        </BlogHeaderContainer>
-      </CompBody>
-
-      {/* picture section  */}
-      <BlogDetailImage />
-
-      {/* Blog article details seection  */}
-      <CompBody>
-        <Stack
-          sx={{
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "3rem",
-          }}
-          spacing={2}
-        >
-          <Typography variant="body" width={"60%"}>
-            Ghana is a country rich in culture, traditions, and food. The food
-            culture in Ghana is diverse and consists of a variety of local
-            dishes made from fresh ingredients. The traditional diet in Ghana is
-            centered around staples such as maize, yam, cassava, and plantains,
-            along with vegetables and a variety of sauces and spices. Staples
-            and Snacks Maize is a staple grain in Ghana and is often consumed in
-            the form of kenkey, a popular street food made from fermented maize
-            dough. Yam is another staple food in Ghana and is often boiled,
-            fried, or roasted. Cassava, a root vegetable, is also widely
-            consumed and is often processed into gari, a popular side dish.
-            Plantains are a staple food in Ghana and are often used to make
-            boiled plantain, plantain chips, and kelewele, a popular street food
-            made from ripe plantains.
-          </Typography>
-
-          <Typography variant="titleBold" width={"60%"}>
-            Food Varieties in Ghana
-          </Typography>
-        </Stack>
-      </CompBody>
-    </div>
+        </CompBody>
+      </div>
+    </>
   );
 };
 
 export default SingleBlogPostDetail;
+
+export async function getStaticProps(context) {
+  const { params } = context;
+  const blogArticle = await axios.get(
+    `http://44.203.73.117:1337/api/blogs/${params.blogid}?populate=*`
+  );
+
+  return {
+    props: {
+      singleBlogArticle: blogArticle.data.data.attributes,
+    },
+  };
+}
+
+export async function getStaticPaths() {
+  const blogArticles = await axios.get(
+    "http://44.203.73.117:1337/api/blogs?populate=*"
+  );
+
+  let renderPaths = blogArticles.data.data.map((item) => {
+    return {
+      params: {
+        blogid: `${item.id}`,
+      },
+    };
+  });
+
+  return {
+    paths: [...renderPaths],
+    fallback: "blocking",
+  };
+}
