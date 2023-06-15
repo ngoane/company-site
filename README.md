@@ -1,38 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ngoane Digital Health Platform
+
+Ngoane Digital Health Platform is a web application designed to support individuals living with chronic diseases. It provides various features to help users manage their health conditions, track symptoms, record medical history, and connect with healthcare professionals.
+
+## Features
+
+- Symptom Tracker: Users can track their symptoms, record relevant information such as date, time, possible triggers, and how they feel over time.
+
+- Medical History: Users can maintain a comprehensive record of their medical history, including diagnoses, medications, treatments, and test results.
+
+- Appointment Management: Users can schedule appointments with healthcare professionals, receive reminders, and access appointment details.
+
+- Health Insights: The platform provides valuable insights into user data, such as symptom patterns, medication adherence, and health trends.
+
+- Connect with Healthcare Professionals: Users can communicate with their healthcare providers through secure messaging and request prescription refills or ask questions.
+
+## Technologies Used
+
+- Next js: A React framework for building production level fullstack applications.
+- Material-UI: A popular React UI framework that provides pre-designed components and styling options.
+- Day.js: A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
+- Axios: A promise-based HTTP client for making API requests from the client-side.
+- Express.js: A minimal and flexible Node.js web application framework used for the server-side.
+- MongoDB: A NoSQL database used for storing user data and medical records.
+- Authentication and Authorization: Implement user authentication and authorization using libraries like Next-Auth and JSON Web Tokens (JWT).
+- Secure Messaging: Utilize encryption and security best practices for implementing secure messaging functionality.
 
 ## Getting Started
 
-First, run the development server:
+To get started with the Ngoane Digital Health Platform, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+git clone https://github.com/ngoane/company-site.git
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+2. Install the dependencies:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+3. Set up the server:
 
-To learn more about Next.js, take a look at the following resources:
+   - Make sure you have MongoDB installed and running on your system.
+   - Create a `.env` file in the project root directory and provide the necessary environment variables (e.g., database connection URL, secret keys).
+   - Start the server:
+     ```
+     npm run server
+     ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Set up the client:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   - Open a new terminal and navigate to the project root directory (`company-site`).
+   - Install the client dependencies:
+     ```
+     npm install
+     ```
+   - Start the client:
+     ```
+     npm start
+     ```
 
-## Deploy on Vercel
+5. Access the application:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   The application will be accessible at `http://localhost:3000` in your web browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## API Endpoints
+
+The server provides various API endpoints for handling user-related actions, medical records, appointments, messaging, and more. 
+
+## Contributors
+
+- Dr. Ehoneah Obed
+- Lawrence Ogereka
+- Maxwell D. Dorliea
+
+
+## Contributing
+
+Contributions are welcome! If you find any bugs or have suggestions for improvement, please create an issue or submit a pull request.
+
+## License
+
+This project is closed source and all rights are reserved by the project contributors.

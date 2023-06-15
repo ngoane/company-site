@@ -7,6 +7,9 @@ import UserLayout from "@/components/userUi/layout/UserLayout";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const theme = createTheme(customTheme);
 
 export default function App({ Component, pageProps }) {
@@ -29,10 +32,12 @@ export default function App({ Component, pageProps }) {
         {!layout ? (
           <ClientLayout>
             <Component {...pageProps} />
+            <ToastContainer/>
           </ClientLayout>
         ) : (
           <UserLayout>
             <Component {...pageProps} />
+            <ToastContainer/>
           </UserLayout>
         )}
       </ThemeProvider>

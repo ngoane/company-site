@@ -3,10 +3,19 @@ const db = require('../utils/db');
 
 // Get all symptom trackers for a user
 const getAllSymptomTrackers = async (req, res) => {
-  const { userId } = req.params;
+  // const { userId } = req.params;
+
+  // try {
+  //   const symptomTrackers = await SymptomTracker.find({ userId });
+  //   res.json(symptomTrackers);
+  // } catch (error) {
+  //   res.status(500).json({ error: 'Unable to fetch symptom trackers' });
+  // }
+
+  // const { userId } = req.params;
 
   try {
-    const symptomTrackers = await SymptomTracker.find({ userId });
+    const symptomTrackers = await SymptomTracker.find().populate('symptomId');
     res.json(symptomTrackers);
   } catch (error) {
     res.status(500).json({ error: 'Unable to fetch symptom trackers' });
@@ -30,11 +39,13 @@ const getOneSymptomTracker = async (req, res) => {
 
 // Create a new symptom tracker for a user
 const createSymptomTracker = async (req, res) => {
-  const { userId, symptomId, date, time, possibleTrigger, howYouFeel } = req.body;
+  // const { userId, symptomId, date, time, possibleTrigger, howYouFeel } = req.body;
+  console.log(req.body)
+  const { symptomId, date, time, possibleTrigger, howYouFeel } = req.body;
 
   try {
     const symptomTracker = await SymptomTracker.create({
-      userId,
+      // userId,
       symptomId,
       date,
       time,
@@ -43,6 +54,7 @@ const createSymptomTracker = async (req, res) => {
     });
     res.status(201).json(symptomTracker);
   } catch (error) {
+    console.log(error)
     res.status(400).json({ error: 'Unable to create symptom tracker' });
   }
 };
@@ -69,7 +81,7 @@ const updateSymptomTracker = async (req, res) => {
 
 // Delete a symptom tracker by ID
 const deleteSymptomTracker = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.query;
 
   try {
     const deletedSymptomTracker = await SymptomTracker.findByIdAndDelete(id);
