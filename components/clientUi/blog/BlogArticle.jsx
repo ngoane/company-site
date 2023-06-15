@@ -20,7 +20,7 @@ import dayjs from "dayjs";
 const BlogArticle = ({ blogPosts }) => {
   return (
     <>
-      {console.log(blogPosts)}
+      {/* {console.log(blogPosts)} */}
 
       {blogPosts.length > 0 &&
         blogPosts.map((item) => {
