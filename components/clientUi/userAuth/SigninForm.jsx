@@ -20,7 +20,6 @@ function SigninForm() {
   const handleLogin = async (e) => {
     e.preventDefault();
     const res = await signIn('credentials', { redirect: false, email: user.email, password: user.password });
-    console.log(res);
     if (res && !res.ok) {
       return { error: true, message: 'Invalid credential'};
     }

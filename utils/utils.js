@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const fs = require('fs');
 const axios = require('axios');
 const formData = require('form-data');
+const Cors = require('cors');
 
 export const hashPWD = async (password) => await bcrypt.hash(password, 12);
 export const checkPW = async (plain, hashed) => await bcrypt.compare(plain, hashed);
@@ -38,4 +39,22 @@ export const sendConfirmationEmail = async (recipientEmail, recipientName, confi
     } catch (err) {
       return { error: true, message: err.message };
     }
+  }
+
+
+export const cors = Cors({
+    methods: ['POST', 'GET', 'HEAD'],
+})
+
+
+  export const runMiddleware = ( req, res, fn ) => {
+    return new Promise((resolve, reject) => {
+      fn(req, res, (result) => {
+        if (result instanceof Error) {
+          return reject(result)
+        }
+  
+        return resolve(result)
+      })
+    })
   }

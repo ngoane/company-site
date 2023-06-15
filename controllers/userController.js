@@ -1,6 +1,7 @@
 import User from "@/models/user";
 import { hashPWD } from "@/utils/utils";
 import { connect, mongoose } from "mongoose";
+import uuid4 from "uuid4";
 
 const connectDB = async () => {
     if (mongoose.connections[0].readyState) {
@@ -10,7 +11,11 @@ const connectDB = async () => {
 }
 
 export const getUserByEmail = async ( email, selectPW=false) => {
-  await connectDB();
+  try {
+    await connectDB();
+  } catch (err) {
+    return {error: true, message: 'Connection to db failed', err};
+  }
   if (selectPW) {
     const user = await User.findOne( { email }).select('+password');
     return user
@@ -38,7 +43,8 @@ export const createUser = async (firstName, lastName, email, phoneNumber, passwo
     return {error: true, message: 'User already exists' };
   }
   const hashedPW = await hashPWD(password);
-  const user = new User({ firstName, lastName, email, phoneNumber, password: hashedPW, gender, profession });
+  const verificationToken = uuid4();
+  const user = new User({ firstName, lastName, email, phoneNumber, password: hashedPW, gender, profession, verificationToken });
   try {
     await user.save()
   } catch {
@@ -46,3 +52,16 @@ export const createUser = async (firstName, lastName, email, phoneNumber, passwo
   }
   return user;
 };
+
+export const verifyUserByEmail = async ( verificationToken ) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    return {error: true, message: 'Connection to db failed', err};
+  }
+  const user = await User.findOneAndUpdate({ verificationToken }, { verificationToken: null, isVerify: true });
+  if (!user) {
+    return { error: true, message: 'Verification token is not associated with any user'}
+  }
+  return user;
+}
