@@ -6,10 +6,11 @@ import ClientLayout from "@/components/clientUi/layout/ClientLayout";
 import UserLayout from "@/components/userUi/layout/UserLayout";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
 
 const theme = createTheme(customTheme);
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps: { session, ...pageProps} }) {
   const [layout, setLayout] = useState(false);
   const router = useRouter();
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }) {
   });
 
   return (
-    <>
+    <SessionProvider session={session}>
       <ThemeProvider theme={theme}>
         <GlobalStyles styles={MuiGlobalStyle} />
         {!layout ? (
@@ -36,6 +37,6 @@ export default function App({ Component, pageProps }) {
           </UserLayout>
         )}
       </ThemeProvider>
-    </>
+    </SessionProvider>
   );
 }

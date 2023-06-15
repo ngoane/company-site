@@ -1,11 +1,33 @@
 import { Box, Button, Link, TextField, Typography, Divider, Icon, OutlinedInput, InputAdornment, IconButton, Visibility, VisibilityOff, Stack } from '@mui/material'
 import * as React from 'react'
 import { Google, Facebook } from '@mui/icons-material'
+import { useState } from 'react'
+import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react'
+
+
 
 function SigninForm() {
+  const router = useRouter();
+  const [user, setUser] = useState({email: '', password: ''});
+  const setEmail = (e) => {
+    setUser((values) => ({...values, email: e.target.value}));
+  }
+  const setPassword = (e) => {
+    setUser((values) => ({...values, password: e.target.value}));
+  }
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const res = await signIn('credentials', { redirect: false, email: user.email, password: user.password });
+    if (res && !res.ok) {
+      return { error: true, message: 'Invalid credential'};
+    }
+    router.push('/user');
+  }
 
   return (
-    <div>
+    <form onSubmit={handleLogin}>
       <Box sx={{ 
         display: "flex",
         flexDirection: "column",
@@ -13,14 +35,14 @@ function SigninForm() {
         width: '100%',
         
         }}>
-        <TextField label="Email Address"  sx={{ backgroundColor: 'white'}} />
-        <TextField type="password" label="Password" sx={{ backgroundColor: 'white'}} />
+        <TextField label="Email Address"  sx={{ backgroundColor: 'white'}} value={user.email} onChange={setEmail}/>
+        <TextField type="password" label="Password" sx={{ backgroundColor: 'white'}} value={user.password} onChange={setPassword}/>
         <Link href="#" underline='none' sx={{
           textAlign: 'right',
         }}>FORGOT PASSWORD?</Link>
         
       </Box>
-      <Button variant='contained' sx= {{
+      <Button variant='contained' type='submit' sx= {{
         width: '100%',
         marginTop: '2rem',
       }}>Sign In</Button>
@@ -72,7 +94,7 @@ function SigninForm() {
           Sign In with Facebook
         </Button>
       </Stack>
-    </div>
+    </form>
   )
 }
 
