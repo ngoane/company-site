@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const symptomTrackerSchema = new mongoose.Schema({
-  symptom: {
+  symptomId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Symptom',
     required: true,
@@ -18,7 +18,7 @@ const symptomTrackerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  howDoYouFeel: {
+  howYouFeel: {
     type: String,
     required: true,
   },

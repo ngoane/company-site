@@ -1,33 +1,67 @@
-const db = require('../utils/db');
-const User = require('../models/User');
+import User from "@/models/user";
+import { hashPWD } from "@/utils/utils";
+import { connect, mongoose } from "mongoose";
+import uuid4 from "uuid4";
 
-// Controller function to create a new user
-const createUser = async (req, res) => {
+const connectDB = async () => {
+    if (mongoose.connections[0].readyState) {
+      return;
+    }
+    await connect(process.env.MONGO_URI);
+}
+
+export const getUserByEmail = async ( email, selectPW=false) => {
   try {
-    // Extract user data from the request body
-    const { firstName, lastName, email, password, profession, gender } = req.body;
-
-    // Create a new User instance
-    const user = new User({
-      firstName,
-      lastName,
-      email,
-      password,
-      profession,
-      gender,
-    });
-
-    // Save the user to the database
-    await user.save();
-
-    // Respond with the created user object
-    res.status(201).json(user);
-  } catch (error) {
-    // Handle any errors that occur during the creation of the user
-    res.status(500).json({ error: 'Failed to create user' });
+    await connectDB();
+  } catch (err) {
+    return {error: true, message: 'Connection to db failed', err};
   }
+  if (selectPW) {
+    const user = await User.findOne( { email }).select('+password');
+    return user
+  }
+  const user = await User.findOne({ email });
+  return user;
+}
+
+const userExists = async ( email ) => {
+  const user = getUserByEmail(email);
+  if (!user.length) {
+    return false;
+  }
+  return true;
+}
+
+export const createUser = async (firstName, lastName, email, phoneNumber, password, gender, profession) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    return {error: true, message: 'Connection to db failed', err};
+  }
+  const isUser = await userExists(email);
+  if (isUser) {
+    return {error: true, message: 'User already exists' };
+  }
+  const hashedPW = await hashPWD(password);
+  const verificationToken = uuid4();
+  const user = new User({ firstName, lastName, email, phoneNumber, password: hashedPW, gender, profession, verificationToken });
+  try {
+    await user.save()
+  } catch {
+    return {error: true, message: 'Unable to create the user; make sure you are filling all require fields'};
+  }
+  return user;
 };
 
-// Other controller functions for user operations can be added here
-
-module.exports = { createUser };
+export const verifyUserByEmail = async ( verificationToken ) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    return {error: true, message: 'Connection to db failed', err};
+  }
+  const user = await User.findOneAndUpdate({ verificationToken }, { verificationToken: null, isVerify: true });
+  if (!user) {
+    return { error: true, message: 'Verification token is not associated with any user'}
+  }
+  return user;
+}

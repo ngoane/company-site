@@ -23,6 +23,7 @@ export default function handler(req, res) {
     }
     // Handle DELETE request to delete a symptom tracker
     else if (method === 'DELETE' && req.query.id) {
+      console.log('You are about to delete a record')
       deleteSymptomTracker(req, res);
     }
     // Handle unsupported HTTP methods
