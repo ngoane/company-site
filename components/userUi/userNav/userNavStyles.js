@@ -33,12 +33,35 @@ export const UserLogo = styled.img`
 `;
 
 export const LeftNavInnerBox = styled.nav`
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
   gap: 0.5rem;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: rgba(145, 56, 232, 0.1);
+    border-radius: 1rem;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #9138e8;
+    border-radius: 1rem;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 `;
 
 export const UserNavLink = styled(Link)`
@@ -52,6 +75,11 @@ export const UserNavLink = styled(Link)`
   width: 100%;
 `;
 
+export const LogOutSettingsBox = styled.div`
+  margin-top: 2rem;
+  width: 100%;
+`;
+
 export const UserIconBox = styled.i`
   color: ${({ theme, active }) =>
     active == true ? theme.palette.primary.main : "#3A3A3A"};
@@ -61,7 +89,8 @@ export const UserIconBox = styled.i`
 export const LinkContainer = styled(Accordion)`
   &.MuiAccordion-root {
     background-color: transparent;
-    border: none;
+    border: none !important;
+    outline: none !important;
     box-shadow: 0 0 0 0 transparent;
     width: 100%;
     padding: 0rem;
@@ -84,7 +113,7 @@ export const LinkHeaderBox = styled.div`
 
 export const LinkBody = styled(AccordionDetails)`
   margin-top: -1rem;
-  padding-left: 3rem;
+  padding-left: 0.5;
 `;
 
 //top nav styled components
