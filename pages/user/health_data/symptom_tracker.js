@@ -1,75 +1,129 @@
-import React, { useState } from "react";
-import { Typography, Card, Box, Paper, Button } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Typography, Card, Box, Paper, Button, CircularProgress } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableContainer,
-  TableHead,
-  TextField,
-} from "@mui/material";
 
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead, TextField, FormControl, InputLabel, MenuItem, Select, FormHelperText } from "@mui/material";
 import dayjs from "dayjs";
 import axios from "axios";
+import { toast } from "react-toastify";
+
+
+
+
+
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-  createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
-  createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
-  createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
-  createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
-  createData("Fri, 12/02/2023", "12:00 am", "Severe headache", "", ""),
-];
 
-let symptomRecords = {
-  symptom: "",
+const initialSymptomRecord = {
+  symptomId: "",
   date: "",
   time: "",
-  trigger: "",
-  feeling: "",
+  possibleTrigger: "",
+  howYouFeel: "",
 };
 
-function symptom_tracker({ symptoms }) {
-  const [symptomRecord, setSymptomRecord] = useState(symptomRecords);
 
-  // make a post request to 'localhost:3000/api/user'
+function SymptomTracker({  symptoms }) {
+  const [symptomRecord, setSymptomRecord] = useState(initialSymptomRecord);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
+  const [symptomRecords, setSymptomRecords] = useState([]);
 
   const handleTextFieldChange = (e) => {
-    setSymptomRecord((prevState) => {
-      return { ...prevState, [e.target.name]: e.target.value };
-    });
+    setSymptomRecord((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleDateTimeChange = (value, name) => {
-    if (name === "date") {
-      value = dayjs(value.$d).format("MM/DD/YYYY");
-    } else {
-      value = dayjs(value.$d).format("hh:mm a");
-    }
-    setSymptomRecord((prevState) => {
-      return { ...prevState, [name]: value };
-    });
+    const formattedValue = name === "date" ? dayjs(value.$d).format("MM/DD/YYYY") : dayjs(value.$d).format("hh:mm a");
+    setSymptomRecord((prevState) => ({
+      ...prevState,
+      [name]: formattedValue,
+    }));
   };
 
   const sendRecord = async () => {
-    // console.log(symptomRecord);
-    const response = await axios.post(
-      "http://localhost:3000/api/symptom",
-      symptomRecord
-    );
+    // Perform field validation
+    let isValid = true;
+    const errors = {};
+
+    if (!symptomRecord.symptomId) {
+      errors.symptomId = "Symptom is required";
+      isValid = false;
+    }
+
+    if (!symptomRecord.date) {
+      errors.date = "Date is required";
+      isValid = false;
+    }
+
+    if (!symptomRecord.time) {
+      errors.time = "Time is required";
+      isValid = false;
+    }
+
+    if (!symptomRecord.possibleTrigger) {
+      errors.possibleTrigger = "Possible trigger is required";
+      isValid = false;
+    }
+
+    if (!symptomRecord.howYouFeel) {
+      errors.howYouFeel = "How do you feel is required";
+      isValid = false;
+    }
+
+    if (!isValid) {
+      setValidationErrors(errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await axios.post("http://localhost:3000/api/symptom_trackers", symptomRecord);
+      toast.success("Symptom recorded successfully");
+      setSymptomRecord(initialSymptomRecord);
+      fetchSymptomRecords(); // Refresh the symptom records after a new record is added
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occurred while recording the symptom");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const fetchSymptomRecords = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/api/symptom_trackers");
+      setSymptomRecords(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSymptomRecords(); // Fetch symptom records when the component mounts
+  }, []);
+
+  const deleteRecord = async (id) => {
+    if (window.confirm("Are you sure you want to delete this record?")) {
+      try {
+        await axios.delete(`http://localhost:3000/api/symptom_trackers?id=${id}`);
+        toast.success("Symptom record deleted successfully");
+        fetchSymptomRecords(); // Refresh the symptom records after a record is deleted
+      } catch (error) {
+        console.log(error.response.data);
+        toast.error("An error occurred while deleting the symptom record");
+      }
+    }
+
 
   return (
     <>
@@ -79,6 +133,7 @@ function symptom_tracker({ symptoms }) {
           SYMPTOM TRACKER
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
+
           <Card
             sx={{
               width: "60%",
@@ -86,6 +141,7 @@ function symptom_tracker({ symptoms }) {
               padding: "1.5rem",
             }}
           >
+
             <Typography variant="titleBold">SYMPTOMS RECORDED</Typography>
             <Box
               sx={{
@@ -98,7 +154,6 @@ function symptom_tracker({ symptoms }) {
               }}
             >
               <Typography>February, 2023</Typography>
-
               <DatePicker
                 label="Select Month"
                 openTo="month"
@@ -107,7 +162,7 @@ function symptom_tracker({ symptoms }) {
                 sx={{ width: "70%", alignContent: "flex-end" }}
               />
             </Box>
-
+              
             <TableContainer component={Paper} sx={{ padding: "2rem" }}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -120,24 +175,26 @@ function symptom_tracker({ symptoms }) {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
-                    <TableRow
-                      key={row.name}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
+                  {symptomRecords.map((record) => (
+                    <TableRow key={record.id}>
                       <TableCell component="th" scope="row">
-                        {row.name}
+                        {dayjs(record.date).format("YYYY-MM-DD")}
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
+                      <TableCell align="right">{record.time}</TableCell>
+                      <TableCell align="right">{record.symptomId.name}</TableCell>
+                      <TableCell align="right">Edit</TableCell>
+                      <TableCell align="right">
+                        <Button variant="outlined" color="error" onClick={() => deleteRecord(record._id)}>
+                          Delete
+                        </Button>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </Table>
             </TableContainer>
           </Card>
+
           <Card
             sx={{
               width: "30%",
@@ -145,61 +202,82 @@ function symptom_tracker({ symptoms }) {
               padding: "1.5rem",
             }}
           >
+
             <Paper sx={{ padding: "1.5rem" }}>
               <Typography variant="titleBold" sx={{ paddingBottom: "1rem" }}>
                 RECORD A SYMPTOM
               </Typography>
-              <FormControl fullWidth>
+              <FormControl fullWidth error={!!validationErrors.symptomId}>
                 <InputLabel id="demo-simple-select-label">Symptom</InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Age"
-                  name="symptom"
-                  onChange={(e) => handleTextFieldChange(e)}
+
+                  name="symptomId"
+                  onChange={handleTextFieldChange}
+                  value={symptomRecord.symptom}
+
                 >
                   {symptoms.map((symptom) => (
-                    <MenuItem key={symptom.id} value={symptom.name}>
+                    <MenuItem key={symptom._id} value={symptom._id}>
                       {symptom.name}
                     </MenuItem>
                   ))}
                 </Select>
+                <FormHelperText>{validationErrors.symptomId}</FormHelperText>
               </FormControl>
-              <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
+              <FormControl fullWidth error={!!validationErrors.date} sx={{ paddingTop: "1rem" }}>
                 <DatePicker
                   label="Date"
                   openTo="day"
                   views={["year", "month", "day"]}
                   onChange={(v) => handleDateTimeChange(v, "date")}
+
+                  value={symptomRecord.date}
+
                 />
+                <FormHelperText>{validationErrors.date}</FormHelperText>
               </FormControl>
-              <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
+
+              <FormControl fullWidth error={!!validationErrors.time} sx={{ paddingTop: "1rem" }}>
                 <TimePicker
                   label="Time"
                   onChange={(v) => handleDateTimeChange(v, "time")}
+                  value={symptomRecord.time}
                 />
+                <FormHelperText>{validationErrors.time}</FormHelperText>
+
               </FormControl>
-              <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
+              <FormControl fullWidth error={!!validationErrors.possibleTrigger} sx={{ paddingTop: "1rem" }}>
                 <TextField
                   id="outlined-basic"
                   label="Possible Trigger"
                   variant="outlined"
                   multiline
                   rows={1}
-                  name="trigger"
-                  onChange={(e) => handleTextFieldChange(e)}
+
+                  name="possibleTrigger"
+                  onChange={handleTextFieldChange}
+                  value={symptomRecord.possibleTrigger}
+
                 />
+                <FormHelperText>{validationErrors.possibleTrigger}</FormHelperText>
               </FormControl>
-              <FormControl sx={{ paddingTop: "1rem", width: "100%" }}>
+              <FormControl fullWidth error={!!validationErrors.howYouFeel} sx={{ paddingTop: "1rem" }}>
                 <TextField
                   id="outlined-basic"
                   label="How do you feel?"
                   variant="outlined"
                   multiline
                   rows={3}
-                  name="feeling"
-                  onChange={(e) => handleTextFieldChange(e)}
+
+                  name="howYouFeel"
+                  onChange={handleTextFieldChange}
+                  value={symptomRecord.howYouFeel}
+
                 />
+                <FormHelperText>{validationErrors.howYouFeel}</FormHelperText>
               </FormControl>
 
               <FormControl
@@ -210,7 +288,9 @@ function symptom_tracker({ symptoms }) {
                 }}
               >
                 <Button variant="contained" onClick={sendRecord}>
-                  Record
+
+                  {isSubmitting ? <CircularProgress size={24} /> : "Record"}
+
                 </Button>
               </FormControl>
             </Paper>
@@ -222,14 +302,27 @@ function symptom_tracker({ symptoms }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:3000/api/symptom");
-  const symptoms = await res.json();
-  // console.log(symptoms);
-  return {
-    props: {
-      symptoms,
-    },
-  };
+  try {
+    const response = await axios.get("http://localhost:3000/api/symptom_trackers");
+    const symptomRecords = response.data;
+    const res = await axios.get("http://localhost:3000/api/symptom");
+    const symptoms = await res.data;
+
+    return {
+      props: {
+        symptomRecords,
+        symptoms,
+      },
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      props: {
+        symptomRecords: [],
+        symptoms: [],
+      },
+    };
+  }
 }
 
-export default symptom_tracker;
+export default SymptomTracker;

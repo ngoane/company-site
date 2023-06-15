@@ -6,12 +6,12 @@ export default function handler(req, res) {
     const { method } = req;
   
     // Handle GET request to fetch all symptom trackers
-    if (method === 'GET') {
-      getAllSymptomTrackers(req, res);
+    if (method === 'GET' && req.query.id) {
+      getOneSymptomTracker(req, res);
     }
     // Handle GET request to fetch a single symptom tracker
-    else if (method === 'GET' && req.query.id) {
-      getOneSymptomTracker(req, res);
+    else if (method === 'GET') {
+      getAllSymptomTrackers(req, res);
     }
     // Handle POST request to create a new symptom tracker
     else if (method === 'POST') {
@@ -23,6 +23,7 @@ export default function handler(req, res) {
     }
     // Handle DELETE request to delete a symptom tracker
     else if (method === 'DELETE' && req.query.id) {
+      console.log('You are about to delete a record')
       deleteSymptomTracker(req, res);
     }
     // Handle unsupported HTTP methods

@@ -8,6 +8,9 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const theme = createTheme(customTheme);
 
 export default function App({ Component, pageProps: { session, ...pageProps} }) {
@@ -30,10 +33,12 @@ export default function App({ Component, pageProps: { session, ...pageProps} }) 
         {!layout ? (
           <ClientLayout>
             <Component {...pageProps} />
+            <ToastContainer/>
           </ClientLayout>
         ) : (
           <UserLayout>
             <Component {...pageProps} />
+            <ToastContainer/>
           </UserLayout>
         )}
       </ThemeProvider>
