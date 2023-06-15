@@ -21,8 +21,31 @@ import {
 import * as React from "react";
 import { Google, Facebook } from "@mui/icons-material";
 import Select from "@mui/material/Select";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 function ResgiterForm() {
+  const [user, setUser] = React.useState ({firstName: '', lastName: '', email: '', phoneNumber: '', password: '', gender: '', profession: ''});
+  const setFirstName = (e) => setUser(value => ({...value, firstName: e.target.value}));
+  const setLastName = (e) => setUser(value => ({...value, lastName: e.target.value}));
+  const setEmail = (e) => setUser(value => ({...value, email: e.target.value}));
+  const setPhoneNumber = (e) => setUser(value => ({...value, phoneNumber: e.target.value}));
+  const setPassword = (e) => setUser(value => ({...value, password: e.target.value}));
+  const setGender = (e) => setUser(value => ({...value, gender: e.target.value}));
+  const setProfession = (e) => setUser(value => ({...value, profession: e.target.value}));
+
+  const router = useRouter();
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    const BASEURL = process.env.BASE_URL ?? 'http://127.0.0.1:3000/api';
+    try {
+      await axios.post(`${BASEURL}/auth/signup`, user);
+      router.push('/auth/email_verification');
+    } catch (err) {
+      return {error: 'Couldn"t register user'};
+    }
+ }
+
   return (
     <div>
       <Box
@@ -37,20 +60,28 @@ function ResgiterForm() {
           <TextField
             label="First Name"
             sx={{ backgroundColor: "white", width: "48%" }}
+            value={user.firstName}
+            onChange={setFirstName}
           />
           <TextField
             label="Last Name"
             sx={{ backgroundColor: "white", width: "48%" }}
+            value={user.lastName}
+            onChange={setLastName}
           />
         </Box>
         <Box sx={{ display: "flex", gap: "4%" }}>
           <TextField
             label="Email Address"
             sx={{ backgroundColor: "white", width: "48%" }}
+            value={user.email}
+            onChange={setEmail}
           />
           <TextField
             label="Phone Number"
             sx={{ backgroundColor: "white", width: "48%" }}
+            value={user.phoneNumber}
+            onChange={setPhoneNumber}
           />
         </Box>
 
@@ -59,6 +90,8 @@ function ResgiterForm() {
             type="password"
             label="Password"
             sx={{ backgroundColor: "white", width: "48%" }}
+            value={user.password}
+            onChange={setPassword}
           />
           <TextField
             type="password"
@@ -80,12 +113,13 @@ function ResgiterForm() {
               labelId="demo-simple-select-label"
               id="demo-simple-select"
               label="Gender"
-              onChange={() => {}}
+              value={user.gender}
+              onChange={setGender}
               sx={{ backgroundColor: "white", width: "100%" }}
             >
-              <MenuItem value={10}>Male</MenuItem>
-              <MenuItem value={20}>Female</MenuItem>
-              <MenuItem value={30}>Refuse to disclose</MenuItem>
+              <MenuItem value={'Male'}>Male</MenuItem>
+              <MenuItem value={'Female'}>Female</MenuItem>
+              <MenuItem value={'Refuse to disclose'}>Refuse to disclose</MenuItem>
             </Select>
           </FormControl>
 
@@ -93,6 +127,8 @@ function ResgiterForm() {
             type="text"
             label="Profession"
             sx={{ backgroundColor: "white", width: "100%" }}
+            value={user.profession}
+            onChange={setProfession}
           />
         </Box>
       </Box>
@@ -103,6 +139,7 @@ function ResgiterForm() {
           width: "100%",
           marginTop: "2rem",
         }}
+        onClick={handleSignUp}
       >
         Register
       </Button>

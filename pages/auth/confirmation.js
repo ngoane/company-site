@@ -6,8 +6,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { CustomButton } from "@/styles/globalComponentsStyle";
+import { useRouter } from "next/router";
 
 const confirmation = () => {
+  const router = useRouter();
   return (
     <>
       <Paper
@@ -68,6 +70,7 @@ const confirmation = () => {
                 marginTop: "2rem",
                 padding: '0.5rem 3rem 0.5rem 3rem'
               }}
+              onClick={() => router.push('/auth/login') }
             >
               Login
             </Button>
@@ -80,6 +83,7 @@ const confirmation = () => {
                 color: '#222',
                 padding: '0.5rem 3rem 0.5rem 3rem'
               }}
+              onClick={() => router.push('/') }
             >
               Cancel
             </Button>

@@ -4,10 +4,21 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+
 import { Table, TableBody, TableCell, TableRow, TableContainer, TableHead, TextField, FormControl, InputLabel, MenuItem, Select, FormHelperText } from "@mui/material";
 import dayjs from "dayjs";
 import axios from "axios";
 import { toast } from "react-toastify";
+
+
+
+
+
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
 
 const initialSymptomRecord = {
   symptomId: "",
@@ -16,6 +27,7 @@ const initialSymptomRecord = {
   possibleTrigger: "",
   howYouFeel: "",
 };
+
 
 function SymptomTracker({  symptoms }) {
   const [symptomRecord, setSymptomRecord] = useState(initialSymptomRecord);
@@ -111,16 +123,25 @@ function SymptomTracker({  symptoms }) {
         toast.error("An error occurred while deleting the symptom record");
       }
     }
-  };
+
 
   return (
     <>
+      {console.log("sysmtom init state :", symptomRecord)}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Typography variant="headlineMainBold" sx={{ marginBottom: "1.5rem" }}>
           SYMPTOM TRACKER
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
-          <Card sx={{ width: "60%", height: "auto", padding: "1.5rem" }}>
+
+          <Card
+            sx={{
+              width: "60%",
+              height: "auto",
+              padding: "1.5rem",
+            }}
+          >
+
             <Typography variant="titleBold">SYMPTOMS RECORDED</Typography>
             <Box
               sx={{
@@ -173,7 +194,15 @@ function SymptomTracker({  symptoms }) {
               </Table>
             </TableContainer>
           </Card>
-          <Card sx={{ width: "30%", height: "auto", padding: "1.5rem" }}>
+
+          <Card
+            sx={{
+              width: "30%",
+              height: "auto",
+              padding: "1.5rem",
+            }}
+          >
+
             <Paper sx={{ padding: "1.5rem" }}>
               <Typography variant="titleBold" sx={{ paddingBottom: "1rem" }}>
                 RECORD A SYMPTOM
@@ -184,9 +213,11 @@ function SymptomTracker({  symptoms }) {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   label="Age"
+
                   name="symptomId"
                   onChange={handleTextFieldChange}
                   value={symptomRecord.symptom}
+
                 >
                   {symptoms.map((symptom) => (
                     <MenuItem key={symptom._id} value={symptom._id}>
@@ -202,10 +233,13 @@ function SymptomTracker({  symptoms }) {
                   openTo="day"
                   views={["year", "month", "day"]}
                   onChange={(v) => handleDateTimeChange(v, "date")}
+
                   value={symptomRecord.date}
+
                 />
                 <FormHelperText>{validationErrors.date}</FormHelperText>
               </FormControl>
+
               <FormControl fullWidth error={!!validationErrors.time} sx={{ paddingTop: "1rem" }}>
                 <TimePicker
                   label="Time"
@@ -213,6 +247,7 @@ function SymptomTracker({  symptoms }) {
                   value={symptomRecord.time}
                 />
                 <FormHelperText>{validationErrors.time}</FormHelperText>
+
               </FormControl>
               <FormControl fullWidth error={!!validationErrors.possibleTrigger} sx={{ paddingTop: "1rem" }}>
                 <TextField
@@ -221,9 +256,11 @@ function SymptomTracker({  symptoms }) {
                   variant="outlined"
                   multiline
                   rows={1}
+
                   name="possibleTrigger"
                   onChange={handleTextFieldChange}
                   value={symptomRecord.possibleTrigger}
+
                 />
                 <FormHelperText>{validationErrors.possibleTrigger}</FormHelperText>
               </FormControl>
@@ -234,9 +271,11 @@ function SymptomTracker({  symptoms }) {
                   variant="outlined"
                   multiline
                   rows={3}
+
                   name="howYouFeel"
                   onChange={handleTextFieldChange}
                   value={symptomRecord.howYouFeel}
+
                 />
                 <FormHelperText>{validationErrors.howYouFeel}</FormHelperText>
               </FormControl>
@@ -249,7 +288,9 @@ function SymptomTracker({  symptoms }) {
                 }}
               >
                 <Button variant="contained" onClick={sendRecord}>
+
                   {isSubmitting ? <CircularProgress size={24} /> : "Record"}
+
                 </Button>
               </FormControl>
             </Paper>
