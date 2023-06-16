@@ -57,7 +57,7 @@ const LeftNavLinkDropDown = ({
             <Typography
               variant={nowActive ? "userLinkTextBold" : "userLinkText"}
             >
-              Health Data
+              {linkName}
             </Typography>
           </LinkHeaderBox>
         </LinkHeader>
